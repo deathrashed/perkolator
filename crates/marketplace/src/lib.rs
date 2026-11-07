@@ -6,8 +6,11 @@
 //! start MCP servers or run hooks. Installation goes through the deployment
 //! engine, never through a provider.
 
+pub mod config;
 mod contract;
+pub mod dedup;
 mod env;
+pub mod federated;
 pub mod github;
 pub mod testing;
 
