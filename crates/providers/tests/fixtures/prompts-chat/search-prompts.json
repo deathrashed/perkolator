@@ -1,0 +1,306 @@
+{
+ "prompts": [
+  {
+   "id": "cmw1tkqu20009lb08cd32fshv",
+   "title": "dbt Analytics Project taste",
+   "slug": "dbt-analytics-project-taste",
+   "description": "Opinionated conventions for structuring, testing and shipping dbt analytics projects.",
+   "content": "# dbt Analytics Project taste of a careful analytics engineer\n- Layer models into staging, intermediate and marts folders, with one staging model per source table. Confidence: 0.90\n- Keep staging models to renaming, casting and light cleanup only; put joins and business logic in intermediate and mart models. Confidence: 0.90\n- Reference raw data only through source() in staging models and use ref(",
+   "type": "TASTE",
+   "mediaUrl": null,
+   "viewCount": 0,
+   "createdAt": "2026-11-04T07:53:07.802Z",
+   "updatedAt": "2026-11-04T07:53:07.802Z",
+   "authorId": "cmj1z4npj0000vl0r4ld08d6w",
+   "categoryId": "cmj1yryoz0005t5albvxi3aw8",
+   "requiredMediaCount": null,
+   "requiredMediaType": null,
+   "requiresMediaUpload": false,
+   "structuredFormat": null,
+   "featuredAt": null,
+   "isFeatured": false,
+   "trendingUntil": null,
+   "delistReason": null,
+   "bestWithModels": [],
+   "bestWithMCP": [],
+   "workflowLink": null,
+   "botPlatform": null,
+   "botPlatforms": [],
+   "botIcon": null,
+   "botColor": null,
+   "installUrl": null,
+   "computerRequirements": [],
+   "botConfig": null,
+   "classifierSlug": null,
+   "classifierConfig": null,
+   "author": {
+    "id": "cmj1z4npj0000vl0r4ld08d6w",
+    "name": "Fatih Kadir Akın",
+    "username": "f",
+    "avatar": "https://avatars.githubusercontent.com/u/196477?v=4",
+    "verified": true
+   },
+   "category": {
+    "id": "cmj1yryoz0005t5albvxi3aw8",
+    "name": "Coding",
+    "slug": "coding",
+    "description": "Programming and development prompts",
+    "icon": "💻",
+    "order": 1,
+    "pinned": false,
+    "parentId": null,
+    "parent": null
+   },
+   "tags": [
+    {
+     "promptId": "cmw1tkqu20009lb08cd32fshv",
+     "tagId": "tag_sql",
+     "tag": {
+      "id": "tag_sql",
+      "name": "SQL",
+      "slug": "sql",
+      "color": "#dc2626"
+     }
+    },
+    {
+     "promptId": "cmw1tkqu20009lb08cd32fshv",
+     "tagId": "cmlj8vag60000ju04lj3lz98t",
+     "tag": {
+      "id": "cmlj8vag60000ju04lj3lz98t",
+      "name": "Data Quality",
+      "slug": "data-quality",
+      "color": "#6366f1"
+     }
+    },
+    {
+     "promptId": "cmw1tkqu20009lb08cd32fshv",
+     "tagId": "tag_dataanalysis",
+     "tag": {
+      "id": "tag_dataanalysis",
+      "name": "Data Analysis",
+      "slug": "data-analysis",
+      "color": "#d946ef"
+     }
+    },
+    {
+     "promptId": "cmw1tkqu20009lb08cd32fshv",
+     "tagId": "tag_testing",
+     "tag": {
+      "id": "tag_testing",
+      "name": "Testing",
+      "slug": "testing",
+      "color": "#4f46e5"
+     }
+    },
+    {
+     "promptId": "cmw1tkqu20009lb08cd32fshv",
+     "tagId": "cmk84e8ub0000jr04q6kfbfik",
+     "tag": {
+      "id": "cmk84e8ub0000jr04q6kfbfik",
+      "name": "Best Practices",
+      "slug": "best-practices",
+      "color": "#6366f1"
+     }
+    }
+   ],
+   "contributors": [],
+   "_count": {
+    "votes": 0,
+    "contributors": 0,
+    "outgoingConnections": 0,
+    "incomingConnections": 0
+   },
+   "userExamples": [],
+   "isTrending": false,
+   "voteCount": 0,
+   "contributorCount": 0
+  },
+  {
+   "id": "cmvxi5t8a0001l208j321df3j",
+   "title": "Hidden Unicode and Text Encoding Checker",
+   "slug": "hidden-unicode-and-text-encoding-checker",
+   "description": "Finds what you cannot see in pasted code, configs, prompts and data files - Trojan Source bidi controls, hidden Unicode tag text (prompt injection), zero-width and invisible characters, odd spaces, control characters, Cyrillic/Greek homoglyphs, mojibake, invalid UTF-8, BOMs, mixed line endings and non-NFC text. Decodes hidden text, ranks findings and writes a cleaned copy. Includes an offline stdlib Python checker with --self-test.",
+   "content": "---\nname: hidden-unicode-and-text-encoding-checker\ndescription: Finds what you cannot see in pasted code, configs, prompts and data files - Trojan Source bidi controls, hidden Unicode tag text (prompt injection), zero-width and invisible characters, odd spaces, control characters, Cyrillic/Greek homoglyphs, mojibake, invalid UTF-8, BOMs, mixed line endings and non-NFC text. Decodes hidden text, ra",
+   "type": "SKILL",
+   "mediaUrl": null,
+   "viewCount": 0,
+   "createdAt": "2026-11-01T07:22:30.586Z",
+   "updatedAt": "2026-11-01T07:22:30.586Z",
+   "authorId": "cmj1z4npj0000vl0r4ld08d6w",
+   "categoryId": "cmjekolb7000aus0rgwrtl1e5",
+   "requiredMediaCount": null,
+   "requiredMediaType": null,
+   "requiresMediaUpload": false,
+   "structuredFormat": null,
+   "featuredAt": null,
+   "isFeatured": false,
+   "trendingUntil": null,
+   "delistReason": null,
+   "bestWithModels": [],
+   "bestWithMCP": [],
+   "workflowLink": null,
+   "botPlatform": null,
+   "botPlatforms": [],
+   "botIcon": null,
+   "botColor": null,
+   "installUrl": null,
+   "computerRequirements": [],
+   "botConfig": null,
+   "classifierSlug": null,
+   "classifierConfig": null,
+   "author": {
+    "id": "cmj1z4npj0000vl0r4ld08d6w",
+    "name": "Fatih Kadir Akın",
+    "username": "f",
+    "avatar": "https://avatars.githubusercontent.com/u/196477?v=4",
+    "verified": true
+   },
+   "category": {
+    "id": "cmjekolb7000aus0rgwrtl1e5",
+    "name": "Agent Skill",
+    "slug": "skill",
+    "description": null,
+    "icon": null,
+    "order": 0,
+    "pinned": false,
+    "parentId": "cmj1yryoz0005t5albvxi3aw8",
+    "parent": {
+     "id": "cmj1yryoz0005t5albvxi3aw8",
+     "name": "Coding",
+     "slug": "coding"
+    }
+   },
+   "tags": [
+    {
+     "promptId": "cmvxi5t8a0001l208j321df3j",
+     "tagId": "cmk84e8uk0001jr049n8s0i86",
+     "tag": {
+      "id": "cmk84e8uk0001jr049n8s0i86",
+      "name": "Security",
+      "slug": "security",
+      "color": "#6366f1"
+     }
+    },
+    {
+     "promptId": "cmvxi5t8a0001l208j321df3j",
+     "tagId": "tag_debugging",
+     "tag": {
+      "id": "tag_debugging",
+      "name": "Debugging",
+      "slug": "debugging",
+      "color": "#f59e0b"
+     }
+    },
+    {
+     "promptId": "cmvxi5t8a0001l208j321df3j",
+     "tagId": "cmlj8vag60000ju04lj3lz98t",
+     "tag": {
+      "id": "cmlj8vag60000ju04lj3lz98t",
+      "name": "Data Quality",
+      "slug": "data-quality",
+      "color": "#6366f1"
+     }
+    },
+    {
+     "promptId": "cmvxi5t8a0001l208j321df3j",
+     "tagId": "cmmkvw8i20000ky04h4egye79",
+     "tag": {
+      "id": "cmmkvw8i20000ky04h4egye79",
+      "name": "Developer",
+      "slug": "developer",
+      "color": "#6366f1"
+     }
+    },
+    {
+     "promptId": "cmvxi5t8a0001l208j321df3j",
+     "tagId": "tag_python",
+     "tag": {
+      "id": "tag_python",
+      "name": "Python",
+      "slug": "python",
+      "color": "#16a34a"
+     }
+    }
+   ],
+   "contributors": [],
+   "_count": {
+    "votes": 0,
+    "contributors": 0,
+    "outgoingConnections": 0,
+    "incomingConnections": 0
+   },
+   "userExamples": [],
+   "isTrending": false,
+   "voteCount": 0,
+   "contributorCount": 0
+  },
+  {
+   "id": "cmvsgb1fm000pjq08qhs7vixm",
+   "title": "AI-Generated PLC Code Reviewer",
+   "slug": "ai-generated-plc-code-reviewer",
+   "description": "For anyone using AI to write PLC logic who wants a second, independent check before the code goes anywhere near a machine.",
+   "content": "I want you to act as a strict reviewer of PLC code written by an AI, before it is downloaded to a controller. Platform: ${Platform and version}. Language: ${Language}. Below are my numbered requirements, then the code.\n\nDo a review in five passes and report each as a table. Do not rewrite the code.\nPass 1, requirements: Requirement | Where it is met (block/line) | Met / Partly / Not met | Why\nPass",
+   "type": "TEXT",
+   "mediaUrl": null,
+   "viewCount": 0,
+   "createdAt": "2026-10-28T18:31:44.386Z",
+   "updatedAt": "2026-10-29T08:45:27.867Z",
+   "authorId": "cmvsg23lx0000lh081k3u2728",
+   "categoryId": "cmj1yryoz0005t5albvxi3aw8",
+   "requiredMediaCount": 1,
+   "requiredMediaType": "IMAGE",
+   "requiresMediaUpload": false,
+   "structuredFormat": null,
+   "featuredAt": "2026-10-29T07:09:13.845Z",
+   "isFeatured": true,
+   "trendingUntil": null,
+   "delistReason": null,
+   "bestWithModels": [],
+   "bestWithMCP": [],
+   "workflowLink": null,
+   "botPlatform": null,
+   "botPlatforms": [],
+   "botIcon": null,
+   "botColor": null,
+   "installUrl": null,
+   "computerRequirements": [],
+   "botConfig": null,
+   "classifierSlug": null,
+   "classifierConfig": null,
+   "author": {
+    "id": "cmvsg23lx0000lh081k3u2728",
+    "name": "Markus",
+    "username": "markus864",
+    "avatar": "https://avatars.githubusercontent.com/u/146882839?v=4",
+    "verified": false
+   },
+   "category": {
+    "id": "cmj1yryoz0005t5albvxi3aw8",
+    "name": "Coding",
+    "slug": "coding",
+    "description": "Programming and development prompts",
+    "icon": "💻",
+    "order": 1,
+    "pinned": false,
+    "parentId": null,
+    "parent": null
+   },
+   "tags": [],
+   "contributors": [],
+   "_count": {
+    "votes": 0,
+    "contributors": 0,
+    "outgoingConnections": 0,
+    "incomingConnections": 0
+   },
+   "userExamples": [],
+   "isTrending": false,
+   "voteCount": 0,
+   "contributorCount": 0
+  }
+ ],
+ "total": 52,
+ "page": 1,
+ "perPage": 3,
+ "totalPages": 18
+}

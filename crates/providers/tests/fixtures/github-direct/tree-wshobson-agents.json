@@ -1,0 +1,99 @@
+{
+ "sha": "4bde3168b43c0655c4d00ea2726e631719908a6d",
+ "url": "https://api.github.com/repos/wshobson/agents/git/trees/4bde3168b43c0655c4d00ea2726e631719908a6d",
+ "tree": [
+  {
+   "path": ".claude-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "ba222bcb76bd1a05d9196a4a665808a5386410d2"
+  },
+  {
+   "path": ".claude-plugin/marketplace.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "5b001fa387132efbfb8bf8cf9d6a4c358265ff36",
+   "size": 46765
+  },
+  {
+   "path": "AGENTS.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "0f49c42365bfa3a8ba5217fadd45d7f04cb0d838",
+   "size": 7035
+  },
+  {
+   "path": "README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "52b4542456850a2ec4ffed9b92824c8aa10045bf",
+   "size": 10120
+  },
+  {
+   "path": "plugins",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "c20024e166ef26627264162c68fbe2a297543bbc"
+  },
+  {
+   "path": "plugins/git-pr-workflows",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "5cde650cc929f854a0433ca01bcf3b5e449c8e07"
+  },
+  {
+   "path": "plugins/git-pr-workflows/.claude-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "fcd7c269c7a9d27320cdac5857b08fb9879a41b7"
+  },
+  {
+   "path": "plugins/git-pr-workflows/.claude-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "32c14e3949e4c0107bf7d9f7755801fb069025b3",
+   "size": 257
+  },
+  {
+   "path": "plugins/git-pr-workflows/agents",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "ca2b48b707dedf772b71329dd9f3b0e7b87fede3"
+  },
+  {
+   "path": "plugins/git-pr-workflows/agents/code-reviewer.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "108bc26e8b3ac799b91cf7af7c099103ff276a98",
+   "size": 8432
+  },
+  {
+   "path": "plugins/git-pr-workflows/commands",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "43ba0faaecb7e5d070bda11f57fad79cac3d7eae"
+  },
+  {
+   "path": "plugins/git-pr-workflows/commands/git-workflow.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "cea0e5a8dedc28e7f6053ed86581f364967f880b",
+   "size": 17395
+  },
+  {
+   "path": "plugins/git-pr-workflows/commands/onboard.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "24c32d044516fcae667a84bfe7c654dcc533b8c0",
+   "size": 14530
+  },
+  {
+   "path": "plugins/git-pr-workflows/commands/pr-enhance.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "d3778ccd0353bc50241402125667c5278734df15",
+   "size": 20050
+  }
+ ],
+ "truncated": false
+}

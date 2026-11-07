@@ -1,0 +1,72 @@
+{
+ "qualifiedName": "exa",
+ "displayName": "Exa Search",
+ "description": "Fast, intelligent web search and web crawling. Get fresh information about libraries, APIs, and SDKs.",
+ "iconUrl": "https://api.smithery.ai/servers/exa/icon",
+ "remote": true,
+ "deploymentUrl": "https://exa.run.tools",
+ "connections": [
+  {
+   "type": "http",
+   "deploymentUrl": "https://exa.run.tools",
+   "configSchema": {}
+  }
+ ],
+ "security": null,
+ "tools": [
+  {
+   "name": "web_search_exa",
+   "description": "Search the web for any topic and get clean, ready-to-use content.\n\n      Best for: Finding current information, news, facts, people, companies, or answering que",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "query": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Natural language search query. Should be a semantically rich description of the ideal page, not just keywords. Optionally include category:<type> (company, people) to focus results \u2014 e.g. 'category:people John Doe software engineer'."
+     },
+     "numResults": {
+      "type": "number",
+      "description": "Number of search results to return (default: 10)."
+     }
+    }
+   }
+  },
+  {
+   "name": "web_fetch_exa",
+   "description": "Read a webpage's full content as clean markdown. Use after web_search_exa when highlights are insufficient or to read any URL.\n\nBest for: Extracting full conten",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "urls": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "description": "URLs to read. Batch multiple URLs in one call."
+     },
+     "maxCharacters": {
+      "type": "number",
+      "minimum": 1,
+      "description": "Maximum characters to extract per page (default: 3000)"
+     }
+    }
+   }
+  }
+ ],
+ "resources": [
+  {
+   "name": "tools_list",
+   "uri": "exa://tools/list",
+   "description": "List of available Exa tools and their descriptions",
+   "mimeType": "application/json"
+  }
+ ],
+ "prompts": [
+  {
+   "name": "web_search_help",
+   "description": "Get help with web search using Exa",
+   "arguments": []
+  }
+ ]
+}

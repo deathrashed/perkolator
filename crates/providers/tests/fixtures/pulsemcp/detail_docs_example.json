@@ -1,0 +1,46 @@
+{
+  "_fixture_note": "SYNTHETIC: shaped from the PulseMCP v0.1 docs 'Tools Enrichment' example (premium `remotes[N].tools`). The header value below is fake and exists to prove redaction.",
+  "server": {
+    "name": "com.acme/mcp",
+    "description": "Connect to Acme services",
+    "version": "1.2.0",
+    "repository": { "url": "https://github.com/acme/acme-mcp", "source": "github" },
+    "remotes": [
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.acme.example/mcp",
+        "headers": [{ "name": "X-Acme-Key", "isSecret": true, "value": "fake-pulse-literal-secret" }]
+      }
+    ],
+    "packages": [
+      { "registryType": "npm", "identifier": "@acme/mcp", "version": "1.2.0", "transport": { "type": "stdio" } }
+    ]
+  },
+  "_meta": {
+    "com.pulsemcp/server-version": {
+      "source": "registry.modelcontextprotocol.io",
+      "status": "active",
+      "isLatest": true,
+      "remotes[0]": {
+        "authOptions": [{ "type": "open" }],
+        "tools": [
+          {
+            "name": "read_file",
+            "description": "Read contents of a file from the filesystem",
+            "inputSchema": { "type": "object", "properties": { "path": { "type": "string" } }, "required": ["path"] }
+          },
+          {
+            "name": "list_directory",
+            "description": "List contents of a directory",
+            "inputSchema": { "type": "object", "properties": { "path": { "type": "string" } } }
+          }
+        ]
+      },
+      "packages[0]": {
+        "tools": [
+          { "name": "read_file", "description": "duplicate declaration", "inputSchema": { "type": "object" } }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "_fixture_note": "SYNTHETIC: shaped from https://glama.ai/api/mcp/openapi.json (GET /v1/servers/{id} -> McpServer). The env-var default below is a fake value used to prove redaction.",
+  "attributes": ["hosting:remote-capable"],
+  "deprecatedAt": null,
+  "deprecationComment": null,
+  "description": "Hacker News stories and comments.",
+  "environmentVariablesJsonSchema": {
+    "type": "object",
+    "required": ["HN_TOKEN"],
+    "properties": {
+      "HN_TOKEN": { "type": "string", "description": "API token", "default": "fake-glama-default-secret" }
+    }
+  },
+  "id": "6qobflcypm",
+  "isBoosted": false,
+  "name": "hn-server",
+  "namespace": "pskill9",
+  "qualityScore": null,
+  "replacementServer": null,
+  "repository": { "url": "https://github.com/pskill9/hn-server" },
+  "slug": "hn-server",
+  "spdxLicense": { "name": "MIT", "url": "https://opensource.org/licenses/MIT" },
+  "thumbnailUrl": null,
+  "tools": [
+    {
+      "name": "get_stories",
+      "description": "Fetch top stories",
+      "inputSchema": { "type": "object", "properties": { "limit": { "type": "number" } } }
+    },
+    {
+      "name": "get_comments",
+      "description": null,
+      "inputSchema": { "type": "object", "properties": { "id": { "type": "string" } }, "required": ["id"] }
+    }
+  ],
+  "url": "https://glama.ai/mcp/servers/pskill9/hn-server"
+}

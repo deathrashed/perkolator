@@ -1,0 +1,43 @@
+{
+  "_fixture_note": "Schema-derived from MarketSkillListResponse in @lobehub/market-sdk 0.46.1 (printed verbatim by `lhm skills search --output json`, @lobehub/market-cli 0.0.46). Not a captured response: lhm is not installed and the Market API needs M2M credentials.",
+  "currentPage": 1,
+  "items": [
+    {
+      "author": "anthropics",
+      "category": "productivity",
+      "commentCount": 0,
+      "createdAt": "2026-01-10T00:00:00.000Z",
+      "description": "Extract text, create PDFs, and handle forms",
+      "github": {
+        "stars": 1000,
+        "url": "https://github.com/anthropics/skills"
+      },
+      "identifier": "github.anthropics.skills.pdf",
+      "installCount": 10,
+      "isFeatured": false,
+      "isOfficial": false,
+      "isValidated": true,
+      "name": "pdf",
+      "ratingCount": 0,
+      "updatedAt": "2026-02-01T00:00:00.000Z",
+      "version": "1.0.0"
+    },
+    {
+      "commentCount": 0,
+      "createdAt": "2026-01-11T00:00:00.000Z",
+      "description": "Merge PDF files",
+      "identifier": "pdf-merge",
+      "installCount": 0,
+      "isFeatured": false,
+      "isOfficial": false,
+      "isValidated": false,
+      "name": "PDF Merge",
+      "ratingCount": 0,
+      "updatedAt": "2026-01-11T00:00:00.000Z",
+      "version": "0.1.0"
+    }
+  ],
+  "pageSize": 2,
+  "totalCount": 3,
+  "totalPages": 2
+}

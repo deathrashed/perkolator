@@ -1,0 +1,24 @@
+{
+  "_fixture_note": "Schema-derived from PluginListResponse in @lobehub/market-types 1.22.0 (printed verbatim by `lhm mcp search --output json`, @lobehub/market-cli 0.0.46). Not a captured response.",
+  "categories": ["developer"],
+  "currentPage": 1,
+  "items": [
+    {
+      "author": "modelcontextprotocol",
+      "category": "developer",
+      "createdAt": "2026-01-10T00:00:00.000Z",
+      "description": "Read files from the local filesystem",
+      "github": {
+        "url": "https://github.com/modelcontextprotocol/servers"
+      },
+      "homepage": "https://modelcontextprotocol.io",
+      "identifier": "filesystem",
+      "manifestUrl": "https://market.lobehub.com/manifests/filesystem.json",
+      "name": "Filesystem",
+      "updatedAt": "2026-02-01T00:00:00.000Z"
+    }
+  ],
+  "pageSize": 20,
+  "totalCount": 1,
+  "totalPages": 1
+}

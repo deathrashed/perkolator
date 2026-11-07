@@ -1,0 +1,36 @@
+{
+  "_fixture_note": "SYNTHETIC: shaped from https://www.pulsemcp.com/api/docs/v0.1 and https://api.pulsemcp.com/v0.1/openapi.yaml (ServerList + com.pulsemcp/* _meta). No partner key/tenant was available, so no live 200 body was captured.",
+  "servers": [
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+        "name": "com.acme/mcp",
+        "description": "Connect to Acme services",
+        "version": "1.2.0",
+        "repository": { "url": "https://github.com/acme/acme-mcp", "source": "github" },
+        "remotes": [{ "type": "streamable-http", "url": "https://mcp.acme.example/mcp" }]
+      },
+      "_meta": {
+        "com.pulsemcp/server": { "visitorsEstimateLastFourWeeks": 12450, "isOfficial": true },
+        "com.pulsemcp/server-version": {
+          "source": "registry.modelcontextprotocol.io",
+          "status": "active",
+          "isLatest": true,
+          "publishedAt": "2025-06-15T10:30:00Z",
+          "updatedAt": "2025-11-20T14:22:00Z"
+        }
+      }
+    },
+    {
+      "server": {
+        "name": "com.acme/old",
+        "description": "Removed entry",
+        "version": "0.1.0"
+      },
+      "_meta": {
+        "com.pulsemcp/server-version": { "source": "pulsemcp.com", "status": "deleted", "isLatest": true }
+      }
+    }
+  ],
+  "metadata": { "nextCursor": "com.acme/mcp:1.2.0", "count": 2 }
+}

@@ -1,0 +1,125 @@
+{
+ "sha": "6b0300214a09fd6029cfb7077043125758cd1fd2",
+ "url": "https://api.github.com/repos/cursor/plugins/git/trees/6b0300214a09fd6029cfb7077043125758cd1fd2",
+ "tree": [
+  {
+   "path": "README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "7894f0c6e3801f26354156c8a438af6848024193",
+   "size": 20554
+  },
+  {
+   "path": "create-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "b0ad50595e68322ee6b1c1adc8b27628589d6cd0"
+  },
+  {
+   "path": "create-plugin/.cursor-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "2d11395e7586d45f9d24c148022dd0a963635f24"
+  },
+  {
+   "path": "create-plugin/.cursor-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "b401bba2033206b12160ec6e8ac7a9767cc87ac0",
+   "size": 751
+  },
+  {
+   "path": "create-plugin/CHANGELOG.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "0ac01e47ba1f04e4b6787278eb8a398ad5d18e64",
+   "size": 240
+  },
+  {
+   "path": "create-plugin/LICENSE",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ca2bba771cd39dbef6acf96b52481133983451f3",
+   "size": 1063
+  },
+  {
+   "path": "create-plugin/README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "51470c88a0ce17d73c577c98b0e2db3782439f4d",
+   "size": 1183
+  },
+  {
+   "path": "create-plugin/agents",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "d5baea7302713954d1b867a786e6400bd61466bb"
+  },
+  {
+   "path": "create-plugin/agents/plugin-architect.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "de787f87fc81c953d2b853132402c1ac3b44be3c",
+   "size": 944
+  },
+  {
+   "path": "create-plugin/assets",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "42673ce4945a3ee720e64ac1bd7ab7d3cd1a0ab2"
+  },
+  {
+   "path": "create-plugin/assets/avatar.png",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "2353ea08d187d9d18f9b44f85af33b0dcfd4bbee",
+   "size": 55083
+  },
+  {
+   "path": "create-plugin/rules",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "c5a3d51ae72d767109b8387f8782a8c4f01e1778"
+  },
+  {
+   "path": "create-plugin/rules/plugin-quality-gates.mdc",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "fb50150fc7146eff967ce80350cd9abf47a65adc",
+   "size": 789
+  },
+  {
+   "path": "create-plugin/skills",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "9c3a5fc2a1134266a0103dc9f6bce42c72aeea72"
+  },
+  {
+   "path": "create-plugin/skills/create-plugin-scaffold",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "dfd82fe65946bdac3a3eae8ea2fa880031a6cc5e"
+  },
+  {
+   "path": "create-plugin/skills/create-plugin-scaffold/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "f3986e8fbd650f15f31211d04c1695dcbefd0ea5",
+   "size": 2903
+  },
+  {
+   "path": "create-plugin/skills/review-plugin-submission",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "66757839ce8072c7b6bd1d6e9729544f145cd12f"
+  },
+  {
+   "path": "create-plugin/skills/review-plugin-submission/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "37b0982e30c290d09fa8fdfd44334c8ebab22d74",
+   "size": 1777
+  }
+ ],
+ "truncated": false
+}

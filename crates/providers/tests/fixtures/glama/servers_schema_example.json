@@ -1,0 +1,49 @@
+{
+  "_fixture_note": "SYNTHETIC: shaped from https://glama.ai/api/mcp/openapi.json (GET /v1/servers 200 schema + documented examples). No Glama API key was available, so no live 200 body was captured.",
+  "pageInfo": {
+    "endCursor": "eyJjcmVhdGVkQXQiOjE3NDA2OTcyNDM3MzUsImlkIjoiNlFPQmZsY1lwbSJ9",
+    "hasNextPage": true,
+    "hasPreviousPage": false,
+    "startCursor": "YWJzb2x1dGU6MQ=="
+  },
+  "servers": [
+    {
+      "attributes": ["author:official", "hosting:local-only"],
+      "deprecatedAt": null,
+      "deprecationComment": null,
+      "description": "Browser automation via Playwright accessibility snapshots.",
+      "environmentVariablesJsonSchema": null,
+      "id": "oge85xl22f",
+      "isBoosted": true,
+      "name": "Playwright MCP Server",
+      "namespace": "microsoft",
+      "qualityScore": null,
+      "replacementServer": null,
+      "repository": { "url": "https://github.com/microsoft/playwright-mcp" },
+      "slug": "playwright-mcp",
+      "spdxLicense": { "name": "Apache-2.0", "url": "https://opensource.org/licenses/Apache-2.0" },
+      "thumbnailUrl": "https://glama.ai/mcp/servers/microsoft/playwright-mcp/thumbnail.webp",
+      "tools": [],
+      "url": "https://glama.ai/mcp/servers/microsoft/playwright-mcp"
+    },
+    {
+      "attributes": [],
+      "deprecatedAt": null,
+      "deprecationComment": null,
+      "description": "Hacker News stories and comments.",
+      "environmentVariablesJsonSchema": null,
+      "id": "6qobflcypm",
+      "isBoosted": false,
+      "name": "hn-server",
+      "namespace": "pskill9",
+      "qualityScore": null,
+      "replacementServer": null,
+      "repository": { "url": "https://github.com/pskill9/hn-server" },
+      "slug": "hn-server",
+      "spdxLicense": null,
+      "thumbnailUrl": null,
+      "tools": [],
+      "url": "https://glama.ai/mcp/servers/pskill9/hn-server"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+ "id": "cseed7c35d61e62dca980e3a94f8b",
+ "title": "Concept Researcher",
+ "slug": "concept-researcher",
+ "description": "Gathers accurate beginner-friendly facts and examples for a tutorial topic with sources.",
+ "content": "You are Concept Researcher.\n\n- Research a tutorial topic for beginners: core concepts, common pitfalls, and 2-3 solid examples with sources.\n- Prefer official docs. Hand a fact sheet to Tutorial Drafter. No fluff, no invented APIs.",
+ "type": "BOT",
+ "isPrivate": false,
+ "mediaUrl": null,
+ "viewCount": 0,
+ "createdAt": "2026-10-31T13:54:03.350Z",
+ "updatedAt": "2026-10-31T13:54:03.350Z",
+ "authorId": "cmj1z4npj0000vl0r4ld08d6w",
+ "categoryId": "self_learning",
+ "requiredMediaCount": null,
+ "requiredMediaType": null,
+ "requiresMediaUpload": false,
+ "structuredFormat": null,
+ "featuredAt": null,
+ "isFeatured": false,
+ "trendingUntil": null,
+ "isUnlisted": false,
+ "unlistedAt": null,
+ "delistReason": null,
+ "deletedAt": null,
+ "bestWithModels": [],
+ "bestWithMCP": null,
+ "workflowLink": null,
+ "botPlatform": "GROK_BOT",
+ "botPlatforms": [
+  "GROK_BOT",
+  "OPENCLAW",
+  "HERMES",
+  "AUTOGPT"
+ ],
+ "botIcon": "search",
+ "botColor": "sky",
+ "installUrl": null,
+ "computerRequirements": [
+  "CLOUD"
+ ],
+ "botConfig": {
+  "skills": [],
+  "routines": [],
+  "connectors": []
+ },
+ "classifierSlug": null,
+ "classifierConfig": null,
+ "author": {
+  "id": "cmj1z4npj0000vl0r4ld08d6w",
+  "name": "Fatih Kadir Akın",
+  "username": "f",
+  "avatar": "https://avatars.githubusercontent.com/u/196477?v=4",
+  "verified": true
+ },
+ "category": {
+  "id": "self_learning",
+  "name": "Learning & Skills",
+  "slug": "learning-skills",
+  "description": "Learn new skills and accelerate your growth",
+  "icon": "",
+  "order": 3,
+  "pinned": true,
+  "parentId": "self_parent",
+  "parent": {
+   "id": "self_parent",
+   "name": "Self Improvement",
+   "slug": "self-improvement",
+   "description": "Prompts for personal growth and development",
+   "icon": "🌱",
+   "order": 11,
+   "pinned": false,
+   "parentId": null
+  }
+ },
+ "tags": [
+  {
+   "promptId": "cseed7c35d61e62dca980e3a94f8b",
+   "tagId": "cmj1yryvu001at5alo12ppxf3",
+   "tag": {
+    "id": "cmj1yryvu001at5alo12ppxf3",
+    "name": "Agent",
+    "slug": "agent",
+    "color": "#eab308"
+   }
+  },
+  {
+   "promptId": "cseed7c35d61e62dca980e3a94f8b",
+   "tagId": "tag_learning",
+   "tag": {
+    "id": "tag_learning",
+    "name": "Learning",
+    "slug": "learning",
+    "color": "#eab308"
+   }
+  },
+  {
+   "promptId": "cseed7c35d61e62dca980e3a94f8b",
+   "tagId": "tag_research",
+   "tag": {
+    "id": "tag_research",
+    "name": "Research",
+    "slug": "research",
+    "color": "#10b981"
+   }
+  },
+  {
+   "promptId": "cseed7c35d61e62dca980e3a94f8b",
+   "tagId": "cmlj8s29g0004l804szbuo50r",
+   "tag": {
+    "id": "cmlj8s29g0004l804szbuo50r",
+    "name": "Writing",
+    "slug": "writing",
+    "color": "#6366f1"
+   }
+  }
+ ],
+ "versions": [],
+ "_count": {
+  "votes": 0
+ },
+ "isTrending": false,
+ "voteCount": 0,
+ "hasVoted": false,
+ "betterTogetherWith": []
+}

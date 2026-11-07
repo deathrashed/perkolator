@@ -1,0 +1,219 @@
+{
+ "sha": "99d6d6503a7b2a133e2f8a595d6d0ba24b4086d3",
+ "url": "https://api.github.com/repos/github/github-mcp-server/git/trees/99d6d6503a7b2a133e2f8a595d6d0ba24b4086d3",
+ "tree": [
+  {
+   "path": ".dockerignore",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "8f302e7c05168e6b27cef4aece950d1675372993",
+   "size": 108
+  },
+  {
+   "path": ".gitattributes",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "965a9c32bc701912f0eb85e198bdf0e47f64743a",
+   "size": 53
+  },
+  {
+   "path": ".github",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "271787a4088f351cf5d0b499a5f9656024373273"
+  },
+  {
+   "path": ".github/agents",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "c0ce46b2d57d7549731e0180e99b1faad639045e"
+  },
+  {
+   "path": ".github/agents/go-sdk-tool-migrator.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "f8003fd252c448c91138b2e82336ee19fbb253c3",
+   "size": 6241
+  },
+  {
+   "path": ".gitignore",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "dc0a5f3a3167ae560d9b24d442970720774bb3ef",
+   "size": 424
+  },
+  {
+   "path": ".golangci.yml",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "bde46b8e8079f245df646ec2ad150e4d5ead5c10",
+   "size": 1143
+  },
+  {
+   "path": ".goreleaser.yaml",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "fa70312feb2fade63a1419d2253ed5b68b98e813",
+   "size": 1172
+  },
+  {
+   "path": ".vscode",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "79736743b4fed2140bd3b328557a885aed2c7c23"
+  },
+  {
+   "path": "CODE_OF_CONDUCT.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "cea5751e3ec32f4f627f2685d0a370734d3c366c",
+   "size": 5208
+  },
+  {
+   "path": "CONTRIBUTING.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "b7595682ce7366ec72909bed44dc6dcf7b3d01b2",
+   "size": 5220
+  },
+  {
+   "path": "Dockerfile",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "849e924be7994d5bba0d11dfd24f0b4b80579e3f",
+   "size": 2267
+  },
+  {
+   "path": "LICENSE",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "9a9cc50d37ea399f7ccc2f14b6c6d4cc4de02efc",
+   "size": 1063
+  },
+  {
+   "path": "README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "432541f4342321f88225308ebb70402632798a56",
+   "size": 120055
+  },
+  {
+   "path": "SECURITY.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "67a9cbf2c6c4161a66b9ae4fcd9b74bbff8d0b4d",
+   "size": 1744
+  },
+  {
+   "path": "SUPPORT.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "bc46c78a6726b097e0beec77b45f0105d8d06f22",
+   "size": 639
+  },
+  {
+   "path": "agent-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "3e0f0a6c5e2f2eaab83762214887c5b846ae4a59"
+  },
+  {
+   "path": "cmd",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "dbd54dffc3884b8b58e9a18a3e338187b497e430"
+  },
+  {
+   "path": "docs",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "f293f44eec9f9e9fb3cdcd6a7c5848ec4b02ad0c"
+  },
+  {
+   "path": "e2e",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "f414425978b8e4fb002bfae80b2ac83394b83ee7"
+  },
+  {
+   "path": "gemini-extension.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "d4f6b60cf2821c88eb92623195b02e8c79d0cd93",
+   "size": 323
+  },
+  {
+   "path": "go.mod",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "f848a191bb903d2b21281d4ccd0f04e8b9c02929",
+   "size": 1726
+  },
+  {
+   "path": "go.sum",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "eec6755985e5b778c627437e8c328b22b2796149",
+   "size": 11315
+  },
+  {
+   "path": "internal",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "dc8517abf6cbacbaeea8994bf86387f6e3975923"
+  },
+  {
+   "path": "pkg",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "c8c73a4c78ed75e5ef0ca0c4c508f462da7066a5"
+  },
+  {
+   "path": "script",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "1456a3509de0849a04fddb3bffa59dc467ead8d4"
+  },
+  {
+   "path": "server.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "c77e98ef54fde0fe5170b2c8cda20b030a297d46",
+   "size": 1844
+  },
+  {
+   "path": "third-party-licenses.darwin.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "4eec9682214d1b45110b2db3b073ed34bd5f0192",
+   "size": 5935
+  },
+  {
+   "path": "third-party-licenses.linux.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "a714a789a1a0c758d8d554aecd4b77fa6d75c959",
+   "size": 5954
+  },
+  {
+   "path": "third-party-licenses.windows.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e5fc90b46ecc54a63d6feb652830ec0544c1d572",
+   "size": 6134
+  },
+  {
+   "path": "third-party",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "10f2f81cce030ad8649092e0b50ef50985536d33"
+  },
+  {
+   "path": "ui",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "d5401ecb24a1f49c498ac8b4360204fb51a92958"
+  }
+ ],
+ "truncated": false
+}

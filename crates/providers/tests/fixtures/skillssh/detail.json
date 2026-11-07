@@ -1,0 +1,18 @@
+{
+  "_fixture_note": "Documented example from https://skills.sh/docs/api (GET /api/v1/skills/{source}/{skill}). Requires a Vercel OIDC token; not captured live.",
+  "id": "vercel-labs/skills/find-skills",
+  "source": "vercel-labs/skills",
+  "slug": "find-skills",
+  "installs": 24531,
+  "hash": "a1b2c3d4e5f6",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "contents": "---\nname: find-skills\n---\n# Find skills\n"
+    },
+    {
+      "path": "examples/app-router.ts",
+      "contents": "// Example code..."
+    }
+  ]
+}

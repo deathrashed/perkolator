@@ -1,0 +1,40 @@
+{
+  "_fixture_note": "Documented example from https://skills.sh/docs/api (GET /api/v1/skills/search). A live response could not be captured: the API requires a Vercel OIDC token (anonymous requests return 401).",
+  "data": [
+    {
+      "id": "expo/skills/react-native",
+      "slug": "react-native",
+      "name": "React Native",
+      "source": "expo/skills",
+      "installs": 3842,
+      "sourceType": "github",
+      "installUrl": "https://github.com/expo/skills",
+      "url": "https://skills.sh/expo/skills/react-native"
+    },
+    {
+      "id": "mintlify.com/mintlify",
+      "slug": "mintlify",
+      "name": "mintlify",
+      "source": "mintlify.com",
+      "installs": 120,
+      "sourceType": "well-known",
+      "installUrl": "https://mintlify.com",
+      "url": "https://skills.sh/mintlify.com/mintlify"
+    },
+    {
+      "id": "someone/fork/react-native",
+      "slug": "react-native",
+      "name": "React Native",
+      "source": "someone/fork",
+      "installs": 3,
+      "sourceType": "github",
+      "installUrl": "https://github.com/someone/fork",
+      "url": "https://skills.sh/someone/fork/react-native",
+      "isDuplicate": true
+    }
+  ],
+  "query": "react native",
+  "searchType": "semantic",
+  "count": 3,
+  "durationMs": 142
+}
