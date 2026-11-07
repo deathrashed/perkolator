@@ -187,7 +187,6 @@ mod tests {
         let dir = private_dir("perk-ipc-rt");
         let socket = dir.join("rt.sock");
         let listener = Listener::bind(&socket).unwrap();
-        assert!(Listener::bind(&socket).is_err(), "second bind must fail");
         assert!(matches!(
             try_forward(&socket, "toggle").unwrap(),
             Forwarded::Delivered
@@ -196,6 +195,13 @@ mod tests {
         let mut line = String::new();
         BufReader::new(stream).read_line(&mut line).unwrap();
         assert_eq!(parse_request(&line), Some(Request::Toggle));
+        // The liveness probe of a second bind is an empty connection that
+        // parses to no request.
+        assert!(Listener::bind(&socket).is_err(), "second bind must fail");
+        let (probe, _) = listener.listener.accept().unwrap();
+        let mut probe_line = String::new();
+        BufReader::new(probe).read_line(&mut probe_line).unwrap();
+        assert_eq!(parse_request(&probe_line), None);
         drop(listener);
         assert!(!socket.exists(), "socket removed on drop");
         std::fs::remove_dir_all(&dir).unwrap();

@@ -30,16 +30,21 @@ use perkolator_preview::{
 };
 use perkolator_search::{Query, ScopeFilter, SearchHit, reselect};
 
+use perkolator_marketplace::dedup::MergedItem;
+
 use super::model::{
-    ActionMenu, BackStep, Layout, Mode, back_step, fence, highlight_ranges, human_size,
-    launcher_supports, step_selection,
+    ActionMenu, BackStep, Layout, MenuAction, MenuEntry, Mode, RemoteAction, RowRef, back_step,
+    build_rows, fence, highlight_ranges, human_size, launcher_supports, remote_entries, step_row,
+    step_selection,
 };
+use super::remote::{self, SourceMenu};
 use super::{
     ACTIONS_KEY, Back, CONTEXT, Confirm, EnterCompose, LauncherMemory, NextFile, NextTab,
-    OpenActions, PrevFile, PrevTab, SelectNext, SelectPageNext, SelectPagePrev, SelectPrev,
-    UseCompactLayout, UseExpandedLayout, UseSplitLayout,
+    OpenActions, OpenSources, PrevFile, PrevTab, SOURCES_KEY, SelectNext, SelectPageNext,
+    SelectPagePrev, SelectPrev, ToggleSource, UseCompactLayout, UseExpandedLayout, UseSplitLayout,
 };
 use crate::catalog::{Catalog, CatalogEvent, LoadState};
+use crate::marketplace::{Marketplace, MarketplaceEvent};
 use crate::platform;
 use crate::theme_bridge::Palette;
 
@@ -79,6 +84,8 @@ struct Status {
 pub struct LauncherView {
     focus: FocusHandle,
     catalog: Entity<Catalog>,
+    marketplace: Entity<Marketplace>,
+    sources: Option<SourceMenu>,
     query: Entity<InputState>,
     compose: Entity<InputState>,
     mode: Mode,
@@ -114,6 +121,7 @@ impl Focusable for LauncherView {
 impl LauncherView {
     pub fn new(
         catalog: Entity<Catalog>,
+        marketplace: Entity<Marketplace>,
         memory: LauncherMemory,
         window: &mut Window,
         cx: &mut Context<Self>,
@@ -131,8 +139,15 @@ impl LauncherView {
             cx.subscribe_in(&query, window, |this, _, event, _, cx| {
                 if matches!(event, InputEvent::Change) {
                     this.refresh_results(cx);
+                    this.query_marketplace(cx);
                 }
             }),
+            cx.subscribe(
+                &marketplace,
+                |this, _, event: &MarketplaceEvent, cx| match event {
+                    MarketplaceEvent::Updated => this.on_remote_updated(cx),
+                },
+            ),
             cx.subscribe_in(&compose, window, |_, _, event, _, cx| {
                 if matches!(event, InputEvent::Change) {
                     cx.notify();
@@ -145,6 +160,8 @@ impl LauncherView {
         let mut view = Self {
             focus: cx.focus_handle(),
             catalog,
+            marketplace,
+            sources: None,
             query,
             compose,
             mode: Mode::Search,
@@ -169,6 +186,7 @@ impl LauncherView {
             _subscriptions: subscriptions,
         };
         view.run_search(memory.selected.as_ref(), cx);
+        view.query_marketplace(cx);
         view.query.update(cx, |input, cx| input.focus(window, cx));
         view
     }
@@ -176,16 +194,61 @@ impl LauncherView {
     pub fn memory(&self, cx: &App) -> LauncherMemory {
         LauncherMemory {
             query: self.query.read(cx).value().to_string(),
-            selected: self.hits.get(self.selected).map(|hit| hit.id.clone()),
+            selected: self.selected_local_hit(cx).map(|hit| hit.id.clone()),
             layout: self.layout,
         }
     }
 
     // ---- search & selection -------------------------------------------------
 
+    fn rows(&self, cx: &App) -> Vec<RowRef> {
+        build_rows(self.hits.len(), self.marketplace.read(cx).merged().len())
+    }
+
+    fn selected_row(&self, cx: &App) -> Option<RowRef> {
+        self.rows(cx).get(self.selected).copied()
+    }
+
+    fn selected_local_hit(&self, cx: &App) -> Option<&SearchHit> {
+        match self.selected_row(cx)? {
+            RowRef::Local(ix) => self.hits.get(ix),
+            _ => None,
+        }
+    }
+
+    fn selected_remote(&self, cx: &App) -> Option<MergedItem> {
+        match self.selected_row(cx)? {
+            RowRef::Remote(ix) => self.marketplace.read(cx).merged().get(ix).cloned(),
+            _ => None,
+        }
+    }
+
     fn refresh_results(&mut self, cx: &mut Context<Self>) {
-        let previous = self.hits.get(self.selected).map(|hit| hit.id.clone());
+        let previous = self.selected_local_hit(cx).map(|hit| hit.id.clone());
         self.run_search(previous.as_ref(), cx);
+        cx.notify();
+    }
+
+    fn query_marketplace(&mut self, cx: &mut Context<Self>) {
+        let text = self.parsed.text.clone();
+        let kinds = self.parsed.kinds.clone();
+        self.marketplace
+            .update(cx, |marketplace, cx| marketplace.query(&text, kinds, cx));
+    }
+
+    /// Remote results arrived: keep the local selection; clamp otherwise.
+    fn on_remote_updated(&mut self, cx: &mut Context<Self>) {
+        let len = self.rows(cx).len();
+        if self.selected >= len {
+            self.selected = len.saturating_sub(1);
+        }
+        if let Some(menu) = &mut self.sources {
+            let rows = self.marketplace.read(cx).rows();
+            let selected = menu.selected;
+            let draft = menu.draft.clone();
+            *menu = SourceMenu::new(draft, &rows);
+            menu.selected = selected.min(menu.rows.len().saturating_sub(1));
+        }
         cx.notify();
     }
 
@@ -208,13 +271,26 @@ impl LauncherView {
     }
 
     fn select(&mut self, ix: usize, cx: &mut Context<Self>) {
-        let changed = self.hits.get(ix).map(|hit| &hit.id) != self.current_preview_id().as_ref();
+        let rows = self.rows(cx);
         self.selected = ix;
-        if !self.hits.is_empty() {
+        if !rows.is_empty() {
             self.scroll.scroll_to_item(ix, ScrollStrategy::Top);
         }
-        if changed {
-            self.load_preview(cx);
+        match rows.get(ix) {
+            Some(RowRef::Local(hit_ix)) => {
+                let changed =
+                    self.hits.get(*hit_ix).map(|hit| &hit.id) != self.current_preview_id().as_ref();
+                if changed {
+                    self.load_preview(cx);
+                }
+            }
+            _ => {
+                self.scheduler.cancel();
+                self.preview = PreviewSlot::Idle;
+                self.preview_task = None;
+                self.file_view = None;
+                self.file_ix = None;
+            }
         }
         cx.notify();
     }
@@ -227,7 +303,7 @@ impl LauncherView {
     }
 
     fn selected_record(&self, cx: &App) -> Option<Arc<ResourceRecord>> {
-        let hit = self.hits.get(self.selected)?;
+        let hit = self.selected_local_hit(cx)?;
         self.catalog.read(cx).get(&hit.id)
     }
 
@@ -239,8 +315,15 @@ impl LauncherView {
                     cx.notify();
                 }
             }
+            Mode::Sources => {
+                if let Some(menu) = &mut self.sources {
+                    menu.move_by(delta.signum());
+                    cx.notify();
+                }
+            }
             Mode::Search => {
-                let ix = step_selection(self.selected, self.hits.len(), delta);
+                let rows = self.rows(cx);
+                let ix = step_row(&rows, self.selected, delta);
                 if ix != self.selected {
                     self.select(ix, cx);
                 }
@@ -390,17 +473,94 @@ impl LauncherView {
     }
 
     fn open_actions(&mut self, window: &mut Window, cx: &mut Context<Self>) {
-        let Some(record) = self.selected_record(cx) else {
+        let entries: Vec<MenuEntry> = if let Some(record) = self.selected_record(cx) {
+            actions_for(&record, &self.action_context())
+                .into_iter()
+                .filter(|entry| launcher_supports(entry.id))
+                .map(MenuEntry::from)
+                .collect()
+        } else if let Some(item) = self.selected_remote(cx) {
+            remote_entries(
+                remote_url(&item).is_some(),
+                item.primary.package_ref.is_some(),
+            )
+        } else {
             return;
         };
-        let entries = actions_for(&record, &self.action_context())
-            .into_iter()
-            .filter(|entry| launcher_supports(entry.id))
-            .collect();
         self.menu = Some(ActionMenu::new(entries));
         self.mode = Mode::Actions;
         window.focus(&self.focus, cx);
         cx.notify();
+    }
+
+    fn run_remote_action(&mut self, action: RemoteAction, cx: &mut Context<Self>) {
+        let Some(item) = self.selected_remote(cx) else {
+            return;
+        };
+        match action {
+            RemoteAction::CopySourceUrl => match remote_url(&item) {
+                Some(url) => {
+                    cx.write_to_clipboard(ClipboardItem::new_string(url));
+                    self.set_status("Copied source URL", Tone::Done, cx);
+                }
+                None => self.set_status("The source did not provide a URL", Tone::Error, cx),
+            },
+            RemoteAction::OpenInBrowser => match remote_url(&item) {
+                Some(url) => {
+                    cx.open_url(&url);
+                    self.set_status(format!("Opened {url}"), Tone::Done, cx);
+                }
+                None => self.set_status("The source did not provide a URL", Tone::Error, cx),
+            },
+            RemoteAction::CopyPackageRef => {
+                if let Some(package) = item.primary.package_ref.clone() {
+                    cx.write_to_clipboard(ClipboardItem::new_string(package));
+                    self.set_status("Copied package reference", Tone::Done, cx);
+                }
+            }
+        }
+    }
+
+    fn open_sources(&mut self, window: &mut Window, cx: &mut Context<Self>) {
+        let marketplace = self.marketplace.read(cx);
+        self.sources = Some(SourceMenu::new(marketplace.settings(), &marketplace.rows()));
+        self.menu = None;
+        self.mode = Mode::Sources;
+        window.focus(&self.focus, cx);
+        cx.notify();
+    }
+
+    fn apply_sources(&mut self, window: &mut Window, cx: &mut Context<Self>) {
+        if let Some(menu) = self.sources.take() {
+            self.marketplace.update(cx, |marketplace, cx| {
+                marketplace.apply_settings(menu.draft, cx)
+            });
+            let saved = self.marketplace.read(cx).save_error().map(str::to_owned);
+            match saved {
+                Some(error) => {
+                    self.set_status(format!("Settings not saved: {error}"), Tone::Error, cx)
+                }
+                None => self.set_status("Source settings saved", Tone::Done, cx),
+            }
+        }
+        self.close_menu(window, cx);
+        self.query_marketplace(cx);
+    }
+
+    fn on_open_sources(&mut self, _: &OpenSources, window: &mut Window, cx: &mut Context<Self>) {
+        if self.mode == Mode::Sources {
+            self.sources = None;
+            self.close_menu(window, cx);
+        } else {
+            self.open_sources(window, cx);
+        }
+    }
+
+    fn on_toggle_source(&mut self, _: &ToggleSource, _: &mut Window, cx: &mut Context<Self>) {
+        if let Some(menu) = &mut self.sources {
+            menu.toggle_selected();
+            cx.notify();
+        }
     }
 
     fn run_action(&mut self, id: ActionId, window: &mut Window, cx: &mut Context<Self>) {
@@ -541,6 +701,10 @@ impl LauncherView {
     fn on_confirm(&mut self, _: &Confirm, window: &mut Window, cx: &mut Context<Self>) {
         match self.mode {
             Mode::Search => {
+                if self.selected_remote(cx).is_some() {
+                    self.run_remote_action(RemoteAction::CopySourceUrl, cx);
+                    return;
+                }
                 let Some(record) = self.selected_record(cx) else {
                     return;
                 };
@@ -549,15 +713,19 @@ impl LauncherView {
                 }
             }
             Mode::Compose => self.send_compose(cx),
+            Mode::Sources => self.apply_sources(window, cx),
             Mode::Actions => {
                 let Some(entry) = self.menu.as_ref().and_then(|menu| menu.current()) else {
                     return;
                 };
                 match &entry.availability {
                     ActionAvailability::Available => {
-                        let id = entry.id;
+                        let action = entry.action;
                         self.close_menu(window, cx);
-                        self.run_action(id, window, cx);
+                        match action {
+                            MenuAction::Local(id) => self.run_action(id, window, cx),
+                            MenuAction::Remote(action) => self.run_remote_action(action, cx),
+                        }
                     }
                     ActionAvailability::Disabled { reason } => {
                         let reason = reason.clone();
@@ -569,7 +737,7 @@ impl LauncherView {
     }
 
     fn on_enter_compose(&mut self, _: &EnterCompose, window: &mut Window, cx: &mut Context<Self>) {
-        if self.mode == Mode::Search {
+        if self.mode == Mode::Search && self.selected_record(cx).is_some() {
             self.enter_compose(window, cx);
         }
     }
@@ -584,6 +752,7 @@ impl LauncherView {
 
     fn close_menu(&mut self, window: &mut Window, cx: &mut Context<Self>) {
         self.menu = None;
+        self.sources = None;
         self.mode = Mode::Search;
         self.query.update(cx, |input, cx| input.focus(window, cx));
         cx.notify();
@@ -706,18 +875,23 @@ impl LauncherView {
                 } else {
                     format!("{count} results")
                 };
-                match problems {
-                    0 => results.into(),
-                    1 => format!("{results} · 1 scan issue").into(),
-                    n => format!("{results} · {n} scan issues").into(),
+                let mut summary = match problems {
+                    0 => results,
+                    1 => format!("{results} · 1 scan issue"),
+                    n => format!("{results} · {n} scan issues"),
+                };
+                if let Some(remote) = self.marketplace.read(cx).summary() {
+                    summary.push_str(&format!(" · {remote}"));
                 }
+                summary.into()
             }
         }
     }
 
     fn render_results(&self, cx: &mut Context<Self>) -> AnyElement {
         let theme = cx.theme();
-        if self.hits.is_empty() {
+        let row_count = self.rows(cx).len();
+        if row_count == 0 {
             let message: SharedString = match self.catalog.read(cx).state() {
                 LoadState::Loading => "Indexing local resources…".into(),
                 LoadState::Failed(error) => format!("Indexing failed: {error}").into(),
@@ -748,10 +922,37 @@ impl LauncherView {
         }
         uniform_list(
             "launcher-results",
-            self.hits.len(),
+            row_count,
             cx.processor(|this, range: Range<usize>, _window, cx| {
+                let rows = this.rows(cx);
                 range
-                    .map(|ix| this.render_row(ix, cx).into_any_element())
+                    .filter_map(|ix| {
+                        let element = match rows.get(ix)? {
+                            RowRef::Local(hit_ix) => {
+                                this.render_row(*hit_ix, ix, cx).into_any_element()
+                            }
+                            RowRef::RemoteHeader => {
+                                remote::render_header_row(this.marketplace.read(cx).summary(), cx)
+                            }
+                            RowRef::Remote(item_ix) => {
+                                let item =
+                                    this.marketplace.read(cx).merged().get(*item_ix)?.clone();
+                                div()
+                                    .id(SharedString::from(format!("remote-row-{ix}")))
+                                    .w_full()
+                                    .on_click(cx.listener(move |this, _: &ClickEvent, _, cx| {
+                                        this.select(ix, cx);
+                                    }))
+                                    .child(remote::render_remote_row(
+                                        &item,
+                                        ix == this.selected,
+                                        cx,
+                                    ))
+                                    .into_any_element()
+                            }
+                        };
+                        Some(element)
+                    })
                     .collect::<Vec<_>>()
             }),
         )
@@ -761,10 +962,10 @@ impl LauncherView {
         .into_any_element()
     }
 
-    fn render_row(&self, ix: usize, cx: &mut Context<Self>) -> impl IntoElement {
+    fn render_row(&self, hit_ix: usize, ix: usize, cx: &mut Context<Self>) -> impl IntoElement {
         let theme = cx.theme();
         let palette = Palette::get(cx);
-        let hit = &self.hits[ix];
+        let hit = &self.hits[hit_ix];
         let record = self.catalog.read(cx).get(&hit.id);
         let selected = ix == self.selected;
         let (name, source, state, has_issue) = match &record {
@@ -863,6 +1064,9 @@ impl LauncherView {
         let palette = Palette::get(cx);
         if self.mode == Mode::Compose {
             return self.render_compose(cx);
+        }
+        if let Some(item) = self.selected_remote(cx) {
+            return remote::render_remote_preview(&item, cx);
         }
         let Some(record) = self.selected_record(cx) else {
             return div().into_any_element();
@@ -1306,17 +1510,21 @@ impl LauncherView {
     fn render_footer(&self, cx: &mut Context<Self>) -> impl IntoElement {
         let theme = cx.theme();
         let palette = Palette::get(cx);
-        let default_label = self
-            .selected_record(cx)
-            .and_then(|record| self.launcher_default(&record))
-            .map(ActionId::label)
-            .unwrap_or("Run");
+        let default_label = if self.selected_remote(cx).is_some() {
+            "Copy source URL"
+        } else {
+            self.selected_record(cx)
+                .and_then(|record| self.launcher_default(&record))
+                .map(ActionId::label)
+                .unwrap_or("Run")
+        };
         let hints: Vec<(&'static str, SharedString)> = match self.mode {
             Mode::Search => vec![
                 ("enter", default_label.into()),
                 ("tab", "Compose".into()),
                 (ACTIONS_KEY, "Actions".into()),
                 ("ctrl-tab", "Next tab".into()),
+                (SOURCES_KEY, "Sources".into()),
                 ("escape", "Close".into()),
             ],
             Mode::Compose => vec![
@@ -1324,6 +1532,11 @@ impl LauncherView {
                 ("escape", "Back".into()),
             ],
             Mode::Actions => vec![("enter", "Run".into()), ("escape", "Back".into())],
+            Mode::Sources => vec![
+                ("space", "Toggle".into()),
+                ("enter", "Apply".into()),
+                ("escape", "Cancel".into()),
+            ],
         };
         let status = self.status.as_ref().map(|status| {
             let color = match status.tone {
@@ -1397,6 +1610,8 @@ impl Render for LauncherView {
             .on_action(cx.listener(Self::on_compact))
             .on_action(cx.listener(Self::on_split))
             .on_action(cx.listener(Self::on_expanded))
+            .on_action(cx.listener(Self::on_open_sources))
+            .on_action(cx.listener(Self::on_toggle_source))
             .child(self.render_header(cx))
             .child(div().h_px().flex_shrink_0().bg(palette.hairline))
             .child(
@@ -1425,7 +1640,22 @@ impl Render for LauncherView {
             .child(div().h_px().flex_shrink_0().bg(palette.hairline))
             .child(self.render_footer(cx))
             .children(self.render_menu(cx))
+            .children(
+                self.sources
+                    .as_ref()
+                    .map(|menu| remote::render_source_menu(menu, cx)),
+            )
     }
+}
+
+/// Link for a remote item: canonical page first, else its repository.
+fn remote_url(item: &MergedItem) -> Option<String> {
+    item.sources().find_map(|record| {
+        record
+            .canonical_url
+            .clone()
+            .or_else(|| record.repo_url.clone())
+    })
 }
 
 fn markdown_view(id: impl Into<SharedString>, text: String) -> TextView {
@@ -1519,7 +1749,7 @@ fn tab_label(tab: &PreviewTab) -> &'static str {
     }
 }
 
-fn kind_icon(kind: ResourceKind) -> IconName {
+pub(super) fn kind_icon(kind: ResourceKind) -> IconName {
     match kind {
         ResourceKind::Skill => IconName::Sparkles,
         ResourceKind::McpServer => IconName::Server,

@@ -3,6 +3,7 @@
 //! between invocations.
 
 mod model;
+mod remote;
 mod view;
 
 use std::time::Instant;
@@ -16,6 +17,7 @@ use gpui_kit::{
 use perkolator_core::ResourceId;
 
 use crate::catalog::Catalog;
+use crate::marketplace::Marketplace;
 use crate::platform;
 pub use model::Layout;
 pub use view::{LauncherEvent, LauncherView};
@@ -38,6 +40,8 @@ actions!(
         UseCompactLayout,
         UseSplitLayout,
         UseExpandedLayout,
+        OpenSources,
+        ToggleSource,
     ]
 );
 
@@ -51,6 +55,7 @@ mod keys {
     pub const COMPACT: &str = "cmd-1";
     pub const SPLIT: &str = "cmd-2";
     pub const EXPANDED: &str = "cmd-3";
+    pub const SOURCES: &str = "cmd-s";
 }
 #[cfg(not(target_os = "macos"))]
 mod keys {
@@ -59,8 +64,9 @@ mod keys {
     pub const COMPACT: &str = "ctrl-1";
     pub const SPLIT: &str = "ctrl-2";
     pub const EXPANDED: &str = "ctrl-3";
+    pub const SOURCES: &str = "ctrl-s";
 }
-pub use keys::ACTIONS as ACTIONS_KEY;
+pub use keys::{ACTIONS as ACTIONS_KEY, SOURCES as SOURCES_KEY};
 
 /// Bind after `gpui_kit::init`: bindings at the same context depth that are
 /// added later win, so `PerkLauncher > Input` overrides the text field's own
@@ -85,8 +91,12 @@ pub fn bind_keys(cx: &mut App) {
             KeyBinding::new(keys::COMPACT, UseCompactLayout, Some(context)),
             KeyBinding::new(keys::SPLIT, UseSplitLayout, Some(context)),
             KeyBinding::new(keys::EXPANDED, UseExpandedLayout, Some(context)),
+            KeyBinding::new(keys::SOURCES, OpenSources, Some(context)),
         ]);
     }
+    // Space only toggles while the popover owns focus (root context), never
+    // while typing in the search field.
+    bindings.push(KeyBinding::new("space", ToggleSource, Some(CONTEXT)));
     cx.bind_keys(bindings);
 }
 
@@ -106,14 +116,16 @@ struct OpenLauncher {
 
 pub struct LauncherController {
     catalog: Entity<Catalog>,
+    marketplace: Entity<Marketplace>,
     open: Option<OpenLauncher>,
     memory: LauncherMemory,
 }
 
 impl LauncherController {
-    pub fn new(catalog: Entity<Catalog>) -> Self {
+    pub fn new(catalog: Entity<Catalog>, marketplace: Entity<Marketplace>) -> Self {
         Self {
             catalog,
+            marketplace,
             open: None,
             memory: LauncherMemory::default(),
         }
@@ -198,9 +210,10 @@ impl LauncherController {
     ) -> Result<OpenLauncher, String> {
         let options = window_options(self.memory.layout, layer_shell, cx);
         let catalog = self.catalog.clone();
+        let marketplace = self.marketplace.clone();
         let memory = self.memory.clone();
         let (handle, view) = gpui_kit::open_window(options, cx, |window, cx| {
-            cx.new(|cx| LauncherView::new(catalog, memory, window, cx))
+            cx.new(|cx| LauncherView::new(catalog, marketplace, memory, window, cx))
         })
         .map_err(|error| error.to_string())?;
         let events = cx.subscribe(

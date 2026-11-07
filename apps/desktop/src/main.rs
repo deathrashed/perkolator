@@ -8,6 +8,7 @@ mod catalog;
 mod cli;
 mod ipc;
 mod launcher;
+mod marketplace;
 mod platform;
 mod theme_bridge;
 
@@ -16,6 +17,7 @@ use gpui_kit::{App, AppContext as _, QuitMode};
 use crate::catalog::Catalog;
 use crate::cli::{Cli, Command};
 use crate::launcher::LauncherController;
+use crate::marketplace::Marketplace;
 
 fn main() {
     let cli = match Cli::parse(std::env::args().skip(1)) {
@@ -64,7 +66,8 @@ fn main() {
             launcher::bind_keys(cx);
 
             let catalog = cx.new(|cx| Catalog::load(cli.home.clone(), cx));
-            let controller = cx.new(|_| LauncherController::new(catalog));
+            let marketplace = cx.new(|_| Marketplace::new());
+            let controller = cx.new(|_| LauncherController::new(catalog, marketplace));
             if let Some(listener) = listener {
                 ipc::serve(listener, controller.clone(), cx);
             }
