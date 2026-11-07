@@ -1,0 +1,15 @@
+[package]
+name = "perkolator-providers"
+description = "Marketplace source adapters (skills, MCP, bundles/agents, prompts, GitHub)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+perkolator-core.workspace = true
+perkolator-marketplace.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde_norway.workspace = true
+thiserror.workspace = true

@@ -31,6 +31,22 @@ fn named<'a>(report: &'a ScanReport, kind: ResourceKind, name: &str) -> &'a Reso
 }
 
 #[test]
+fn non_canonical_home_does_not_mark_plain_files_linked() {
+    let canonical = fixture_home();
+    let dotted = canonical.join("projects/..");
+    let report = scan(&ScanConfig::for_fixture_home(&dotted), &Default::default());
+    let agent = named(&report, ResourceKind::Agent, "code-reviewer");
+    assert!(
+        agent
+            .locations
+            .iter()
+            .all(|location| location.state != InstallState::Linked),
+        "plain agent file reported as linked: {:?}",
+        agent.locations
+    );
+}
+
+#[test]
 fn all_six_kinds_are_discovered() {
     let (_, report) = scan_fixture();
     assert!(!report.cancelled);

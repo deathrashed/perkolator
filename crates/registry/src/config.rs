@@ -117,7 +117,18 @@ impl ScanConfig {
     /// ones that exist. These are discovery guesses based on each host's
     /// documented or observed defaults, not guarantees: hosts move files
     /// between versions and users relocate them. Users can add custom roots.
+    ///
+    /// `home` and `projects` are canonicalized so that "reached through a
+    /// symlink" can be decided by comparing a found path with its canonical
+    /// form; a relative or symlinked home would otherwise look linked.
     pub fn well_known(home: &Path, projects: &[PathBuf]) -> Self {
+        let home = home.canonicalize().unwrap_or_else(|_| home.to_path_buf());
+        let home = home.as_path();
+        let projects: Vec<PathBuf> = projects
+            .iter()
+            .map(|project| project.canonicalize().unwrap_or_else(|_| project.clone()))
+            .collect();
+        let projects = projects.as_slice();
         let mut roots = Vec::new();
         let global = || Scope::Global;
 

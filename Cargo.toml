@@ -10,10 +10,14 @@ members = [
     "crates/actions",
     "crates/theme",
     "crates/platform-linux",
+    "crates/marketplace",
+    "crates/providers",
     "apps/cli",
     "apps/desktop",
 ]
 default-members = [
+    "crates/marketplace",
+    "crates/providers",
     "crates/core",
     "crates/registry",
     "crates/targets",
@@ -42,6 +46,8 @@ perkolator-preview = { path = "crates/preview" }
 perkolator-actions = { path = "crates/actions" }
 perkolator-theme = { path = "crates/theme" }
 perkolator-platform-linux = { path = "crates/platform-linux" }
+perkolator-marketplace = { path = "crates/marketplace" }
+perkolator-providers = { path = "crates/providers" }
 
 # GPUI stack: see docs/adr/0001-gpui-stack.md. Exact pin; upgrade only via ADR.
 gpui-kit = { version = "=0.9.0", default-features = false, features = ["component", "assets"] }
@@ -59,6 +65,7 @@ pulldown-cmark = { version = "0.13", default-features = false }
 dirs = "7"
 clap = { version = "4.6", features = ["derive"] }
 ashpd = { version = "0.14", default-features = false }
+ureq = { version = "3.5", default-features = false, features = ["rustls", "gzip"] }
 
 [profile.dev]
 debug = "line-tables-only"
