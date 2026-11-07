@@ -19,8 +19,10 @@ url = "https://market.lobehub.com"
 resource_types = ["skill", "mcp", "agent", "plugin"]
 
 [marketplaces.sources.skillssh]
-enabled = true
-transport = "cli"
+# Opt-in: the API only accepts a Vercel project OIDC token (anonymous = 401),
+# and `npx skills` would download and run remote code, so it is never invoked.
+enabled = false
+transport = "rest"
 resource_types = ["skill"]
 url = "https://skills.sh"
 
@@ -37,9 +39,10 @@ resource_types = ["mcp"]
 url = "https://registry.modelcontextprotocol.io"
 
 [marketplaces.sources.smithery]
-enabled = true
-transport = "cli"
-cli = "smithery"
+# Opt-in: Smithery retired its CLI and API keys on 2026-10-31; anonymous
+# browse/detail still work but text search returns HTTP 500 (verified 2026-11-07).
+enabled = false
+transport = "rest"
 resource_types = ["mcp"]
 url = "https://smithery.ai"
 

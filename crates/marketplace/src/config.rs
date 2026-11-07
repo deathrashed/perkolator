@@ -236,6 +236,8 @@ mod tests {
         assert!(settings.is_enabled(&id("mcp-official")));
         assert!(!settings.is_enabled(&id("glama")), "glama is opt-in");
         assert!(!settings.is_enabled(&id("pulsemcp")), "pulsemcp is opt-in");
+        assert!(!settings.is_enabled(&id("smithery")), "smithery search is down");
+        assert!(!settings.is_enabled(&id("skillssh")), "skills.sh needs OIDC");
         assert_eq!(settings.default_kinds.len(), 6);
         assert_eq!(settings.remote_timeout, Duration::from_millis(6000));
     }
