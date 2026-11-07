@@ -1,0 +1,11 @@
+{
+  "name": "demo-plugin",
+  "version": "0.3.1",
+  "description": "Demo plugin bundling a lint skill and a pre-commit hook.",
+  "author": { "name": "Perkolator Fixtures" },
+  "repository": "https://github.com/example/demo-plugin",
+  "keywords": ["lint", "demo"],
+  "skills": "skills",
+  "hooks": "hooks",
+  "permissions": ["filesystem:read", "process:spawn"]
+}

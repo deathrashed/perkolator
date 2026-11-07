@@ -1,0 +1,6 @@
+model = "gpt-5"
+
+[mcp_servers.docs]
+command = "docs-mcp"
+args = ["--stdio", "--root", "~/docs"]
+enabled = false

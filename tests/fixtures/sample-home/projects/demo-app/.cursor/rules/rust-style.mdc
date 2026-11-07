@@ -1,0 +1,10 @@
+---
+description: Rust style conventions for the demo app
+globs: "**/*.rs, Cargo.toml"
+alwaysApply: false
+---
+
+# Rust Style
+
+- Prefer `?` over explicit `match` for error propagation.
+- Name booleans as predicates (`is_ready`, `has_entry`).

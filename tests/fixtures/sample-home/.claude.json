@@ -1,0 +1,27 @@
+{
+  "numStartups": 3,
+  "mcpServers": {
+    "github": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "FAKE_TOKEN_FOR_TESTS"
+      }
+    }
+  },
+  "projects": {
+    "/home/example/projects/demo-app": {
+      "allowedTools": [],
+      "mcpServers": {
+        "postgres": {
+          "command": "uvx",
+          "args": ["mcp-server-postgres", "--read-only"],
+          "env": {
+            "DATABASE_URL": "${DATABASE_URL}"
+          }
+        }
+      }
+    }
+  }
+}

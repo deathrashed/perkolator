@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "docs-search": {
+      "url": "https://mcp.example.invalid/mcp",
+      "headers": {
+        "Authorization": "Bearer FAKE_BEARER_FOR_TESTS"
+      }
+    }
+  }
+}
