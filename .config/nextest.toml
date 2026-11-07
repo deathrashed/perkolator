@@ -1,0 +1,3 @@
+[profile.default]
+# Worker-local tests fail promptly; the lead runs integration after merging.
+fail-fast = true

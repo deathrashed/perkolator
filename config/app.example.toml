@@ -1,0 +1,24 @@
+# Example only. Do not assume this configuration is parsed by an app yet.
+[app]
+name = "Perkolator"
+start_with_system = true
+
+[launcher]
+layout = "split"
+show_cached_marketplace_results = true
+# User must select available shortcut that does not conflict with system bindings.
+macos_hotkey = "Command+Shift+P"
+linux_hotkey = "Super+Shift+P"
+
+[library]
+roots = ["~/Skills"]
+allow_external_roots = true
+
+[deployment]
+default_mode = "symlink"
+require_dry_run = true
+never_overwrite_unmanaged = true
+
+[appearance]
+theme = "perkolator-dark"
+density = "compact"

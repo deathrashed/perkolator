@@ -1,0 +1,14 @@
+/target/
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+.env
+.env.*
+!.env.example
+*.log
+*.db
+*.db-shm
+*.db-wal
+/coverage/

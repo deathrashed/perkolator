@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schemaVersion": 1,
+  "id": "perkolator-dark",
+  "name": "Perkolator Dark (starter example)",
+  "note": "Application-defined token example; schema not implemented yet; NOT FluxDown validated schema",
+  "colors": {
+    "background": "#1e1e1e",
+    "chrome": "#222224",
+    "surface": "#2c2c2e",
+    "raised": "#31363b",
+    "foreground": "#eff0f1",
+    "mutedForeground": "#a1a1a6",
+    "border": "#48484a",
+    "hairline": "#3e3e40",
+    "primary": "#1abc9b",
+    "focus": "#00ff89",
+    "info": "#1d99f3",
+    "warning": "#fdbc4b",
+    "destructive": "#ed1515",
+    "selection": "#34383b"
+  },
+  "density": {
+    "titleBar": 40,
+    "navRow": 28,
+    "control": 28,
+    "statusBar": 28,
+    "resultRowCompact": 32,
+    "resultRowComfortable": 42
+  },
+  "radius": {
+    "sm": 3,
+    "md": 6,
+    "lg": 8,
+    "xl": 12
+  },
+  "typography": {
+    "body": 13,
+    "caption": 11,
+    "heading": 15,
+    "mono": 13
+  }
+}
