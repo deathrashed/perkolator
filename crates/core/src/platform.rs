@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// OS integrations that differ between macOS and KDE Wayland.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub enum PlatformFeature {
     GlobalShortcut,
@@ -51,16 +51,25 @@ impl PlatformFeature {
 #[serde(tag = "support", rename_all = "kebab-case")]
 pub enum FeatureSupport {
     Supported,
-    PermissionRequired { explanation: String },
-    Fallback { explanation: String },
-    Unavailable { explanation: String },
+    PermissionRequired {
+        explanation: String,
+    },
+    Fallback {
+        explanation: String,
+    },
+    Unavailable {
+        explanation: String,
+    },
     /// Not yet probed on this machine.
     Unknown,
 }
 
 impl FeatureSupport {
     pub fn is_usable(&self) -> bool {
-        matches!(self, FeatureSupport::Supported | FeatureSupport::Fallback { .. })
+        matches!(
+            self,
+            FeatureSupport::Supported | FeatureSupport::Fallback { .. }
+        )
     }
 
     pub fn label(&self) -> &'static str {

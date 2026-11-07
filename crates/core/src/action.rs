@@ -69,7 +69,9 @@ impl ActionId {
 pub enum ActionAvailability {
     Available,
     /// Shown but disabled, with a reason the user can act on.
-    Disabled { reason: String },
+    Disabled {
+        reason: String,
+    },
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
@@ -85,12 +87,22 @@ pub struct ClipboardPayload {
 #[serde(tag = "effect", rename_all = "kebab-case")]
 pub enum ActionEffect {
     WriteClipboard(ClipboardPayload),
-    Reveal { path: PathBuf },
-    OpenUrl { url: String },
-    OpenDetails { id: ResourceId },
-    EnterCompose { id: ResourceId },
+    Reveal {
+        path: PathBuf,
+    },
+    OpenUrl {
+        url: String,
+    },
+    OpenDetails {
+        id: ResourceId,
+    },
+    EnterCompose {
+        id: ResourceId,
+    },
     /// Open the deployment planner; nothing is mutated yet.
-    OpenDeployPlanner { id: ResourceId },
+    OpenDeployPlanner {
+        id: ResourceId,
+    },
 }
 
 /// What actually happened. Clipboard fallback is never reported as insertion.

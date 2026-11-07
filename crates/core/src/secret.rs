@@ -86,6 +86,9 @@ mod tests {
         for reference in ["${GITHUB_TOKEN}", "env:API_KEY", "$HOME_DIR"] {
             assert_eq!(SecretString::new(reference).display_value(), reference);
         }
-        assert_eq!(SecretString::new("$ not ref").display_value(), SecretString::REDACTED);
+        assert_eq!(
+            SecretString::new("$ not ref").display_value(),
+            SecretString::REDACTED
+        );
     }
 }

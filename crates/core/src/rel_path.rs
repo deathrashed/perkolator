@@ -132,7 +132,16 @@ mod tests {
 
     #[test]
     fn rejects_escapes() {
-        for bad in ["", "/etc/passwd", "../x", "a/../../b", "C:/x", "\\\\server\\s", ".", "a\0b"] {
+        for bad in [
+            "",
+            "/etc/passwd",
+            "../x",
+            "a/../../b",
+            "C:/x",
+            "\\\\server\\s",
+            ".",
+            "a\0b",
+        ] {
             assert!(RelPath::new(bad).is_err(), "accepted {bad:?}");
         }
     }

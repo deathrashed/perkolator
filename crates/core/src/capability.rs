@@ -68,7 +68,9 @@ impl CapabilitySet {
     }
 
     pub fn contains_all(&self, capabilities: &[Capability]) -> bool {
-        capabilities.iter().all(|capability| self.contains(*capability))
+        capabilities
+            .iter()
+            .all(|capability| self.contains(*capability))
     }
 
     pub fn iter(&self) -> impl Iterator<Item = Capability> + '_ {

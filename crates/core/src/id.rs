@@ -100,7 +100,10 @@ impl FromStr for ResourceId {
         let mut parts = value.splitn(3, ':');
         let kind = parts.next().ok_or_else(invalid)?.parse()?;
         let provider = ProviderId::new(parts.next().ok_or_else(invalid)?)?;
-        let rest = parts.next().filter(|rest| !rest.is_empty()).ok_or_else(invalid)?;
+        let rest = parts
+            .next()
+            .filter(|rest| !rest.is_empty())
+            .ok_or_else(invalid)?;
         let (key, variant) = match rest.rsplit_once('#') {
             Some((key, variant)) if !key.is_empty() && !variant.is_empty() => {
                 (key.to_owned(), Some(variant.to_owned()))
@@ -138,7 +141,9 @@ mod tests {
 
     #[test]
     fn keys_may_contain_colons() {
-        let parsed: ResourceId = "mcp:cursor:/home/u/.cursor/mcp.json:github".parse().unwrap();
+        let parsed: ResourceId = "mcp:cursor:/home/u/.cursor/mcp.json:github"
+            .parse()
+            .unwrap();
         assert_eq!(parsed.key, "/home/u/.cursor/mcp.json:github");
         assert_eq!(parsed.kind, ResourceKind::McpServer);
     }
