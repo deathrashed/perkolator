@@ -6,6 +6,10 @@ edition.workspace = true
 license.workspace = true
 publish.workspace = true
 
+[lib]
+name = "perkolator_cli"
+path = "src/lib.rs"
+
 [[bin]]
 name = "perk"
 path = "src/main.rs"
@@ -20,3 +24,6 @@ perkolator-preview.workspace = true
 perkolator-actions.workspace = true
 clap.workspace = true
 serde_json.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
