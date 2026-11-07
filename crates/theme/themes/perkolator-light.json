@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "perkolator-light",
+  "name": "Perkolator Light",
+  "mode": "light",
+  "colors": {
+    "background": "#f8f9fa",
+    "chrome": "#f1f3f4",
+    "surface": "#ffffff",
+    "raised": "#eef0f2",
+    "foreground": "#1f2328",
+    "mutedForeground": "#5f6368",
+    "tertiaryForeground": "#7c8186",
+    "border": "#d0d5da",
+    "hairline": "#e3e6e9",
+    "primary": "#1abc9b",
+    "focus": "#00a86b",
+    "info": "#1d7fd1",
+    "warning": "#c98a0b",
+    "destructive": "#d11a1a",
+    "selection": "#e2f1ec",
+    "selectionForeground": "#1f2328",
+    "hover": "#f0f2f4"
+  },
+  "density": {
+    "titleBar": 40,
+    "navRow": 28,
+    "control": 28,
+    "statusBar": 26,
+    "resultRowCompact": 32,
+    "resultRowComfortable": 42
+  },
+  "radius": {
+    "sm": 3,
+    "md": 6,
+    "lg": 8,
+    "xl": 12
+  },
+  "typography": {
+    "body": 13,
+    "caption": 11,
+    "heading": 15,
+    "mono": 13
+  }
+}
