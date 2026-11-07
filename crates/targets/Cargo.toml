@@ -1,0 +1,17 @@
+[package]
+name = "perkolator-targets"
+description = "Data-driven agent host target registry (paths, formats, capabilities)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+perkolator-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+dirs.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

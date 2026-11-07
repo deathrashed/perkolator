@@ -1,0 +1,72 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/core",
+    "crates/registry",
+    "crates/targets",
+    "crates/deployment",
+    "crates/search",
+    "crates/preview",
+    "crates/actions",
+    "crates/theme",
+    "crates/platform-linux",
+    "apps/cli",
+    "apps/desktop",
+]
+default-members = [
+    "crates/core",
+    "crates/registry",
+    "crates/targets",
+    "crates/deployment",
+    "crates/search",
+    "crates/preview",
+    "crates/actions",
+    "crates/theme",
+    "crates/platform-linux",
+    "apps/cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+publish = false
+
+[workspace.dependencies]
+perkolator-core = { path = "crates/core" }
+perkolator-registry = { path = "crates/registry" }
+perkolator-targets = { path = "crates/targets" }
+perkolator-deployment = { path = "crates/deployment" }
+perkolator-search = { path = "crates/search" }
+perkolator-preview = { path = "crates/preview" }
+perkolator-actions = { path = "crates/actions" }
+perkolator-theme = { path = "crates/theme" }
+perkolator-platform-linux = { path = "crates/platform-linux" }
+
+# GPUI stack: see docs/adr/0001-gpui-stack.md. Exact pin; upgrade only via ADR.
+gpui-kit = { version = "=0.9.0", default-features = false, features = ["component", "assets"] }
+
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_norway = "0.9.42"
+toml = "1.2"
+thiserror = "2"
+walkdir = "2.5"
+tempfile = "3.27"
+blake3 = "1.8"
+nucleo-matcher = "0.3.1"
+pulldown-cmark = { version = "0.13", default-features = false }
+dirs = "7"
+clap = { version = "4.6", features = ["derive"] }
+ashpd = { version = "0.14", default-features = false }
+
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+debug = false
+
+[profile.release]
+debug = false
+lto = "thin"
+codegen-units = 16

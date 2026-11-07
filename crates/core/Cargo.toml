@@ -1,0 +1,12 @@
+[package]
+name = "perkolator-core"
+description = "Shared resource identities, typed details, capabilities and contracts for Perkolator."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true

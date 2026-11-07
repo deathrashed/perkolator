@@ -1,0 +1,19 @@
+[package]
+name = "perkolator-deployment"
+description = "Dry-run-first, journalled, recoverable filesystem deployment engine."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+perkolator-core.workspace = true
+perkolator-targets.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+blake3.workspace = true
+walkdir.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

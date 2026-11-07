@@ -1,0 +1,11 @@
+[package]
+name = "perkolator-search"
+description = "Nucleo-backed fuzzy index over all resource kinds."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+perkolator-core.workspace = true
+nucleo-matcher.workspace = true

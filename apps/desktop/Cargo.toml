@@ -1,0 +1,11 @@
+[package]
+name = "perkolator"
+description = "Perkolator native desktop manager and quick launcher (GPUI)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+perkolator-core.workspace = true
+gpui-kit.workspace = true
