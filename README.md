@@ -30,6 +30,7 @@ Requires a stable Rust toolchain (pinned by `rust-toolchain.toml`) on Linux. Ind
 runs discovered scripts, or contacts the network unless you turn marketplaces on.
 
 ```bash
+git clone https://github.com/deathrashed/perkolator.git
 cd perkolator
 cargo build -p perkolator          # GPUI desktop app + quick launcher
 cargo build -p perkolator-cli      # headless `perk` CLI
