@@ -8,4 +8,14 @@ publish.workspace = true
 
 [dependencies]
 perkolator-core.workspace = true
+perkolator-registry.workspace = true
+perkolator-search.workspace = true
+perkolator-preview.workspace = true
+perkolator-actions.workspace = true
+perkolator-theme.workspace = true
 gpui-kit.workspace = true
+async-channel = "2.5"
+dirs.workspace = true
+
+[target.'cfg(target_os = "linux")'.dependencies]
+perkolator-platform-linux.workspace = true
