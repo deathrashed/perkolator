@@ -48,6 +48,10 @@ Perkolator is **not** a skills-only tool or a clone of LobeHub. Keep the six res
 - `#1abc9b` is an available accent, **not** a colour to apply on every selected row, border or button. Neutral surfaces dominate.
 - Reference repositories and their licences differ. Rox app code is AGPL; Sailry Harness is Apache-2.0. Keep provenance for any ported code.
 
+## Marketplace sources (add-on)
+
+Remote catalogues (LobeHub, skills.sh, SkillsMP, the official MCP Registry, Smithery, Glama, Claude/Cursor plugin marketplaces, wshobson/agents, VoltAgent indexes, OfficialSkills, prompts.chat, Awesome Claude Code, PulseMCP and direct GitHub) are specified in [`docs/MARKETPLACE_INTEGRATION.md`](docs/MARKETPLACE_INTEGRATION.md), [`docs/MARKETPLACE_AUTH.md`](docs/MARKETPLACE_AUTH.md), [`docs/MARKETPLACE_UI.md`](docs/MARKETPLACE_UI.md), [`docs/MARKETPLACE_PARALLEL_WORK.md`](docs/MARKETPLACE_PARALLEL_WORK.md) and [`tests/MARKETPLACE_ACCEPTANCE.md`](tests/MARKETPLACE_ACCEPTANCE.md), with example source settings in `config/marketplace-providers.example.toml`. The provider contract lives in `crates/marketplace`; adapters live in `crates/providers`.
+
 ## Fast implementation / parallel agents
 
 **Start with [`prompts/START_HERE.md`](prompts/START_HERE.md).** It tells the lead to implement immediately, delegate independent code to four isolated workers and avoid micro-checkpoints. Read [`docs/EXECUTION_PLAYBOOK.md`](docs/EXECUTION_PLAYBOOK.md), [`docs/WORKSTREAMS.md`](docs/WORKSTREAMS.md), and [`docs/references/DEVELOPMENT_ACCELERATORS.md`](docs/references/DEVELOPMENT_ACCELERATORS.md) for concrete ownership, tooling and performance gates.

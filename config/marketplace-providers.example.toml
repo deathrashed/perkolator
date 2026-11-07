@@ -1,0 +1,111 @@
+# Example declarations only. Merge into Perkolator's existing configuration
+# schema; these entries are not an instruction to overwrite user's settings.
+# Provider capability and authentication metadata are validated at runtime.
+# Never put API keys or OAuth tokens in this file.
+
+[marketplaces]
+mode = "all-enabled" # or "selected-only"
+default_resource_types = ["skill", "mcp", "agent", "plugin", "prompt", "rule"]
+local_index_always_enabled = true
+remote_timeout_ms = 6000
+max_concurrent_sources = 6
+stale_cache_ok = true
+
+[marketplaces.sources.lobehub]
+enabled = true
+transport = "cli"
+cli = "lhm"
+url = "https://market.lobehub.com"
+resource_types = ["skill", "mcp", "agent", "plugin"]
+
+[marketplaces.sources.skillssh]
+enabled = true
+transport = "cli"
+resource_types = ["skill"]
+url = "https://skills.sh"
+
+[marketplaces.sources.skillsmp]
+enabled = true
+transport = "rest"
+resource_types = ["skill"]
+url = "https://skillsmp.com"
+
+[marketplaces.sources.mcp-official]
+enabled = true
+transport = "rest"
+resource_types = ["mcp"]
+url = "https://registry.modelcontextprotocol.io"
+
+[marketplaces.sources.smithery]
+enabled = true
+transport = "cli"
+cli = "smithery"
+resource_types = ["mcp"]
+url = "https://smithery.ai"
+
+[marketplaces.sources.glama]
+enabled = false # opt in after key/terms setup
+transport = "rest"
+resource_types = ["mcp"]
+url = "https://glama.ai"
+
+[marketplaces.sources.claude-plugins]
+enabled = true
+transport = "github-index"
+resource_types = ["plugin", "skill", "agent", "mcp"]
+repo = "anthropics/claude-plugins-official"
+
+[marketplaces.sources.cursor-plugins]
+enabled = true
+transport = "github-index"
+resource_types = ["plugin", "rule", "skill", "agent", "mcp"]
+repo = "cursor/plugins"
+
+[marketplaces.sources.wshobson-agents]
+enabled = true
+transport = "github-index"
+resource_types = ["agent", "skill", "plugin"]
+repo = "wshobson/agents"
+
+[marketplaces.sources.voltagent-skills]
+enabled = true
+transport = "github-index"
+resource_types = ["skill"]
+repo = "VoltAgent/awesome-agent-skills"
+
+[marketplaces.sources.voltagent-subagents]
+enabled = true
+transport = "github-index"
+resource_types = ["agent"]
+repo = "VoltAgent/awesome-claude-code-subagents"
+
+[marketplaces.sources.officialskills]
+enabled = true
+transport = "curated-directory"
+resource_types = ["skill"]
+url = "https://officialskills.sh"
+
+[marketplaces.sources.prompts-chat]
+enabled = true
+transport = "mcp-or-github"
+resource_types = ["prompt", "agent"]
+url = "https://prompts.chat"
+repo = "f/prompts.chat"
+
+[marketplaces.sources.awesome-claude]
+enabled = true
+transport = "github-index"
+resource_types = ["skill", "agent", "plugin", "rule", "prompt"]
+repo = "ianwieds/awesome-claude-code"
+
+[marketplaces.sources.pulsemcp]
+enabled = false # partner/approved API access may be required
+transport = "rest"
+resource_types = ["mcp"]
+url = "https://www.pulsemcp.com/api"
+
+[marketplaces.sources.github-direct]
+enabled = true
+transport = "github"
+resource_types = ["skill", "mcp", "agent", "plugin", "prompt", "rule"]
+url = "https://api.github.com"
