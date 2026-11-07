@@ -35,6 +35,9 @@ pub struct SourceSettings {
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct MarketplaceSettings {
+    /// Master opt-in for any remote request. Off until the user turns it on,
+    /// so installing Perkolator never causes surprise network traffic.
+    pub remote_search_enabled: bool,
     pub mode: SearchMode,
     pub default_kinds: BTreeSet<ResourceKind>,
     pub local_index_always_enabled: bool,
@@ -51,6 +54,7 @@ struct FileRoot {
 
 #[derive(Deserialize)]
 struct FileMarketplaces {
+    remote_search_enabled: Option<bool>,
     mode: Option<String>,
     default_resource_types: Option<Vec<String>>,
     local_index_always_enabled: Option<bool>,
@@ -103,6 +107,7 @@ impl MarketplaceSettings {
             );
         }
         Ok(Self {
+            remote_search_enabled: file.remote_search_enabled.unwrap_or(false),
             mode,
             default_kinds,
             local_index_always_enabled: file.local_index_always_enabled.unwrap_or(true),
@@ -132,6 +137,7 @@ impl MarketplaceSettings {
     }
 
     fn overlay(&mut self, user: &MarketplaceSettings) {
+        self.remote_search_enabled = user.remote_search_enabled;
         self.mode = user.mode;
         self.default_kinds = user.default_kinds.clone();
         self.local_index_always_enabled = user.local_index_always_enabled;
@@ -164,6 +170,10 @@ impl MarketplaceSettings {
             "# Perkolator marketplace source settings. No credentials here.\n[marketplaces]\n",
         );
         out.push_str(&format!(
+            "remote_search_enabled = {}\n",
+            self.remote_search_enabled
+        ));
+        out.push_str(&format!(
             "mode = \"{}\"\n",
             match self.mode {
                 SearchMode::AllEnabled => "all-enabled",
@@ -175,7 +185,10 @@ impl MarketplaceSettings {
             .iter()
             .map(|kind| format!("\"{}\"", kind.slug()))
             .collect();
-        out.push_str(&format!("default_resource_types = [{}]\n", kinds.join(", ")));
+        out.push_str(&format!(
+            "default_resource_types = [{}]\n",
+            kinds.join(", ")
+        ));
         out.push_str(&format!(
             "local_index_always_enabled = {}\nremote_timeout_ms = {}\nmax_concurrent_sources = {}\nstale_cache_ok = {}\n",
             self.local_index_always_enabled,
@@ -218,6 +231,7 @@ mod tests {
     #[test]
     fn bundled_defaults_parse_with_opt_in_sources_disabled() {
         let settings = MarketplaceSettings::defaults();
+        assert!(!settings.remote_search_enabled, "remote search is opt-in");
         assert_eq!(settings.sources.len(), 16);
         assert!(settings.is_enabled(&id("mcp-official")));
         assert!(!settings.is_enabled(&id("glama")), "glama is opt-in");
@@ -233,8 +247,10 @@ mod tests {
         let mut settings = MarketplaceSettings::load(&file).unwrap();
         settings.set_enabled(id("smithery"), false);
         settings.set_enabled(id("glama"), true);
+        settings.remote_search_enabled = true;
         settings.save(&file).unwrap();
         let reloaded = MarketplaceSettings::load(&file).unwrap();
+        assert!(reloaded.remote_search_enabled);
         assert!(!reloaded.is_enabled(&id("smithery")));
         assert!(reloaded.is_enabled(&id("glama")));
         assert!(reloaded.is_enabled(&id("mcp-official")));

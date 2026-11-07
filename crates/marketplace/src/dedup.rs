@@ -67,9 +67,9 @@ pub fn merge(items: impl IntoIterator<Item = RemoteItem>) -> Vec<MergedItem> {
             Some(key) => match index.get(&key) {
                 Some(&ix) => {
                     let entry = &mut merged[ix];
-                    let duplicate = entry
-                        .sources()
-                        .any(|seen| seen.source == item.source && seen.upstream_id == item.upstream_id);
+                    let duplicate = entry.sources().any(|seen| {
+                        seen.source == item.source && seen.upstream_id == item.upstream_id
+                    });
                     if !duplicate {
                         entry.alternates.push(item);
                     }
@@ -98,7 +98,13 @@ mod tests {
     use super::*;
     use crate::RemoteActions;
 
-    fn item(source: &str, id: &str, title: &str, repo: Option<&str>, path: Option<&str>) -> RemoteItem {
+    fn item(
+        source: &str,
+        id: &str,
+        title: &str,
+        repo: Option<&str>,
+        path: Option<&str>,
+    ) -> RemoteItem {
         RemoteItem {
             source: ProviderId::new(source).unwrap(),
             upstream_id: id.into(),
@@ -120,8 +126,20 @@ mod tests {
     #[test]
     fn same_repo_path_merges_and_keeps_both_sources() {
         let merged = merge([
-            item("voltagent-skills", "a", "PDF", Some("https://github.com/Anthropics/skills"), Some("pdf/")),
-            item("github-direct", "b", "pdf tools", Some("https://github.com/anthropics/skills.git"), Some("/pdf")),
+            item(
+                "voltagent-skills",
+                "a",
+                "PDF",
+                Some("https://github.com/Anthropics/skills"),
+                Some("pdf/"),
+            ),
+            item(
+                "github-direct",
+                "b",
+                "pdf tools",
+                Some("https://github.com/anthropics/skills.git"),
+                Some("/pdf"),
+            ),
         ]);
         assert_eq!(merged.len(), 1);
         assert_eq!(merged[0].alternates.len(), 1);
@@ -131,8 +149,20 @@ mod tests {
     #[test]
     fn same_title_different_location_stays_separate() {
         let merged = merge([
-            item("skillsmp", "a", "pdf", Some("https://github.com/x/skills"), Some("pdf")),
-            item("skillsmp", "b", "pdf", Some("https://github.com/y/skills"), Some("pdf")),
+            item(
+                "skillsmp",
+                "a",
+                "pdf",
+                Some("https://github.com/x/skills"),
+                Some("pdf"),
+            ),
+            item(
+                "skillsmp",
+                "b",
+                "pdf",
+                Some("https://github.com/y/skills"),
+                Some("pdf"),
+            ),
             item("officialskills", "c", "pdf", None, None),
         ]);
         assert_eq!(merged.len(), 3);
@@ -140,7 +170,13 @@ mod tests {
 
     #[test]
     fn exact_duplicate_records_are_not_repeated() {
-        let one = item("skillsmp", "a", "pdf", Some("https://github.com/x/s"), Some("pdf"));
+        let one = item(
+            "skillsmp",
+            "a",
+            "pdf",
+            Some("https://github.com/x/s"),
+            Some("pdf"),
+        );
         let merged = merge([one.clone(), one]);
         assert_eq!(merged.len(), 1);
         assert!(merged[0].alternates.is_empty());

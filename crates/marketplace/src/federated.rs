@@ -14,7 +14,9 @@ use std::time::{Duration, Instant};
 use perkolator_core::{CancelToken, ProviderId};
 
 use crate::config::{MarketplaceSettings, SearchMode};
-use crate::{AuthStatus, MarketplaceProvider, ProviderEnv, ProviderError, SearchPage, SearchRequest};
+use crate::{
+    AuthStatus, MarketplaceProvider, ProviderEnv, ProviderError, SearchPage, SearchRequest,
+};
 
 const CACHE_TTL: Duration = Duration::from_secs(10 * 60);
 
@@ -30,6 +32,8 @@ pub enum SourceSelection {
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum SkipReason {
+    /// The master `remote_search_enabled` opt-in is off.
+    RemoteSearchOff,
     Disabled,
     NotSelected,
     KindMismatch,
@@ -136,7 +140,9 @@ impl FederatedSearch {
             .iter()
             .map(|provider| {
                 let descriptor = provider.descriptor();
-                let skip = if !settings.is_enabled(&descriptor.id) {
+                let skip = if !settings.remote_search_enabled {
+                    Some(SkipReason::RemoteSearchOff)
+                } else if !settings.is_enabled(&descriptor.id) {
                     Some(SkipReason::Disabled)
                 } else if matches!(selection, SourceSelection::Only(ids) if !ids.contains(&descriptor.id))
                     || (settings.mode == SearchMode::SelectedOnly
@@ -208,7 +214,9 @@ impl FederatedSearch {
         }
 
         let queue = Arc::new(Mutex::new(queue));
-        let workers = settings.max_concurrent_sources.min(queue.lock().unwrap().len());
+        let workers = settings
+            .max_concurrent_sources
+            .min(queue.lock().unwrap().len());
         for _ in 0..workers {
             let queue = queue.clone();
             let env = self.env.clone();
@@ -396,14 +404,21 @@ mod tests {
     }
 
     fn settings(enabled: &[&str]) -> MarketplaceSettings {
-        let mut settings = MarketplaceSettings::from_toml("[marketplaces]\nremote_timeout_ms = 500").unwrap();
+        let mut settings = MarketplaceSettings::from_toml(
+            "[marketplaces]\nremote_search_enabled = true\nremote_timeout_ms = 500",
+        )
+        .unwrap();
         for id in enabled {
             settings.set_enabled(ProviderId::new(*id).unwrap(), true);
         }
         settings
     }
 
-    fn collect(search: &FederatedSearch, request: SearchRequest, selection: SourceSelection) -> Vec<SourceUpdate> {
+    fn collect(
+        search: &FederatedSearch,
+        request: SearchRequest,
+        selection: SourceSelection,
+    ) -> Vec<SourceUpdate> {
         let updates = Arc::new(Mutex::new(Vec::new()));
         let sink_updates = updates.clone();
         let handle = search.start(
@@ -421,7 +436,11 @@ mod tests {
     }
 
     fn outcome_for<'a>(updates: &'a [SourceUpdate], id: &str) -> &'a SourceOutcome {
-        &updates.iter().find(|update| update.source.as_str() == id).unwrap().outcome
+        &updates
+            .iter()
+            .find(|update| update.source.as_str() == id)
+            .unwrap()
+            .outcome
     }
 
     #[test]
@@ -441,9 +460,35 @@ mod tests {
         assert_eq!(disabled.calls.load(Ordering::SeqCst), 0);
         assert_eq!(mcp_only.calls.load(Ordering::SeqCst), 0);
         assert_eq!(enabled.calls.load(Ordering::SeqCst), 1);
-        assert_eq!(outcome_for(&updates, "off"), &SourceOutcome::Skipped(SkipReason::Disabled));
-        assert_eq!(outcome_for(&updates, "mcp"), &SourceOutcome::Skipped(SkipReason::KindMismatch));
-        assert!(matches!(outcome_for(&updates, "on"), SourceOutcome::Results { .. }));
+        assert_eq!(
+            outcome_for(&updates, "off"),
+            &SourceOutcome::Skipped(SkipReason::Disabled)
+        );
+        assert_eq!(
+            outcome_for(&updates, "mcp"),
+            &SourceOutcome::Skipped(SkipReason::KindMismatch)
+        );
+        assert!(matches!(
+            outcome_for(&updates, "on"),
+            SourceOutcome::Results { .. }
+        ));
+    }
+
+    #[test]
+    fn master_switch_off_means_zero_requests() {
+        let provider = Arc::new(Fake::new("on", &[ResourceKind::Skill]));
+        let (env, http, commands) = offline_env();
+        let mut off = settings(&["on"]);
+        off.remote_search_enabled = false;
+        let search = FederatedSearch::new(vec![provider.clone()], env, off);
+        let updates = collect(&search, SearchRequest::new("pdf"), SourceSelection::AllEnabled);
+        assert_eq!(provider.calls.load(Ordering::SeqCst), 0);
+        assert!(http.requests().is_empty());
+        assert!(commands.calls().is_empty());
+        assert_eq!(
+            outcome_for(&updates, "on"),
+            &SourceOutcome::Skipped(SkipReason::RemoteSearchOff)
+        );
     }
 
     #[test]
@@ -459,13 +504,23 @@ mod tests {
             env,
             settings(&["slow", "broken", "ok"]),
         );
-        let updates = collect(&search, SearchRequest::new("x"), SourceSelection::AllEnabled);
+        let updates = collect(
+            &search,
+            SearchRequest::new("x"),
+            SourceSelection::AllEnabled,
+        );
         assert_eq!(outcome_for(&updates, "slow"), &SourceOutcome::TimedOut);
         assert!(matches!(
             outcome_for(&updates, "broken"),
-            SourceOutcome::Failed { error: ProviderError::Forbidden, .. }
+            SourceOutcome::Failed {
+                error: ProviderError::Forbidden,
+                ..
+            }
         ));
-        assert!(matches!(outcome_for(&updates, "ok"), SourceOutcome::Results { .. }));
+        assert!(matches!(
+            outcome_for(&updates, "ok"),
+            SourceOutcome::Results { .. }
+        ));
     }
 
     #[test]
@@ -482,7 +537,10 @@ mod tests {
             settings(&["locked", "other", "chosen"]),
         );
         let only = SourceSelection::Only(
-            ["locked", "chosen"].into_iter().map(|id| ProviderId::new(id).unwrap()).collect(),
+            ["locked", "chosen"]
+                .into_iter()
+                .map(|id| ProviderId::new(id).unwrap())
+                .collect(),
         );
         let updates = collect(&search, SearchRequest::new("db"), only);
         assert_eq!(locked.calls.load(Ordering::SeqCst), 0);
@@ -492,7 +550,10 @@ mod tests {
             outcome_for(&updates, "locked"),
             &SourceOutcome::Skipped(SkipReason::Auth(AuthStatus::NeedsAccess))
         );
-        assert_eq!(outcome_for(&updates, "other"), &SourceOutcome::Skipped(SkipReason::NotSelected));
+        assert_eq!(
+            outcome_for(&updates, "other"),
+            &SourceOutcome::Skipped(SkipReason::NotSelected)
+        );
     }
 
     #[test]
@@ -506,17 +567,36 @@ mod tests {
         let sink_updates = updates.clone();
         let sink: Arc<dyn Fn(SourceUpdate) + Send + Sync> =
             Arc::new(move |update| sink_updates.lock().unwrap().push(update));
-        let first = search.start(SearchRequest::new("a"), &SourceSelection::AllEnabled, sink.clone());
-        let second = search.start(SearchRequest::new("ab"), &SourceSelection::AllEnabled, sink.clone());
+        let first = search.start(
+            SearchRequest::new("a"),
+            &SourceSelection::AllEnabled,
+            sink.clone(),
+        );
+        let second = search.start(
+            SearchRequest::new("ab"),
+            &SourceSelection::AllEnabled,
+            sink.clone(),
+        );
         std::thread::sleep(Duration::from_millis(600));
-        let seen: Vec<u64> = updates.lock().unwrap().iter().map(|update| update.generation).collect();
-        assert!(!seen.contains(&first.generation), "stale generation delivered: {seen:?}");
+        let seen: Vec<u64> = updates
+            .lock()
+            .unwrap()
+            .iter()
+            .map(|update| update.generation)
+            .collect();
+        assert!(
+            !seen.contains(&first.generation),
+            "stale generation delivered: {seen:?}"
+        );
         assert!(seen.contains(&second.generation));
         assert!(search.is_current(second.generation));
 
         let calls_before = slow.calls.load(Ordering::SeqCst);
         let third = search.start(SearchRequest::new("ab"), &SourceSelection::AllEnabled, sink);
-        assert!(third.scheduled.is_empty(), "cached query must not be rescheduled");
+        assert!(
+            third.scheduled.is_empty(),
+            "cached query must not be rescheduled"
+        );
         assert_eq!(slow.calls.load(Ordering::SeqCst), calls_before);
     }
 }
