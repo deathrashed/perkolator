@@ -1,0 +1,585 @@
+{
+ "sha": "6b0300214a09fd6029cfb7077043125758cd1fd2",
+ "url": "https://api.github.com/repos/cursor/plugins/git/trees/6b0300214a09fd6029cfb7077043125758cd1fd2",
+ "tree": [
+  {
+   "path": ".cursor-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "ef9a0dd68d1600e87bd35d6e7a991142dc627742"
+  },
+  {
+   "path": ".cursor-plugin/marketplace.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "153216eb7e6c35439f663f6552801fa307cf3ace",
+   "size": 26611
+  },
+  {
+   "path": "continual-learning",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "97226cab23982c9d8a374cfb35f3f30ab7942c94"
+  },
+  {
+   "path": "continual-learning/.cursor-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "8728d352fb0bc1d56adba9486d41b65562b7a32a"
+  },
+  {
+   "path": "continual-learning/.cursor-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "3255db70ab63ea412a2a017f621491bee2ba0496",
+   "size": 768
+  },
+  {
+   "path": "continual-learning/LICENSE",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ca2bba771cd39dbef6acf96b52481133983451f3",
+   "size": 1063
+  },
+  {
+   "path": "continual-learning/README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "410fe9252e0525d8b0f6a01e42c34ef9a93a171a",
+   "size": 2301
+  },
+  {
+   "path": "continual-learning/agents",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "d45fb447d74474e0f34459c7a83903042febf413"
+  },
+  {
+   "path": "continual-learning/agents/agents-memory-updater.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "631429f85cb014efe8fb9393ab944688ddb9b14d",
+   "size": 1811
+  },
+  {
+   "path": "continual-learning/assets",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "f4e7b1c5560ec950bc313385f0d55af0f0f99c75"
+  },
+  {
+   "path": "continual-learning/assets/avatar.png",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e3ca3a137f2cc8ef692820cfe2a07f50ed3f155f",
+   "size": 64347
+  },
+  {
+   "path": "continual-learning/hooks",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "a7cf902643712c1a27483a26effd334f0e505d0b"
+  },
+  {
+   "path": "continual-learning/hooks/continual-learning-stop.ts",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "fa6f5d95bf39159a69da88204750a234d371d863",
+   "size": 7813
+  },
+  {
+   "path": "continual-learning/hooks/hooks.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "11a0f739f9d02327f2dd88bd8e36eb64be3df4c4",
+   "size": 157
+  },
+  {
+   "path": "continual-learning/skills",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "97cdb7fd43ec881b27ca02501a957d0439424891"
+  },
+  {
+   "path": "continual-learning/skills/continual-learning",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "ca8838b5cb190bcf29560f34f0a33d235fefe2b8"
+  },
+  {
+   "path": "continual-learning/skills/continual-learning/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "f1beb5c7e4665c5c281a9245cbd5dcceccdd2fa7",
+   "size": 634
+  },
+  {
+   "path": "cursor-team-kit",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "6ccaf3821c0e9f82780c5224a2f2cd5ef3f580ee"
+  },
+  {
+   "path": "cursor-team-kit/.cursor-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "9a2a5caba3b8c60a046caf8046bed8e46d4ebd43"
+  },
+  {
+   "path": "cursor-team-kit/.cursor-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "23a67962d468e87ea256a225f713cc8996a974b0",
+   "size": 899
+  },
+  {
+   "path": "cursor-team-kit/LICENSE",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ca2bba771cd39dbef6acf96b52481133983451f3",
+   "size": 1063
+  },
+  {
+   "path": "cursor-team-kit/README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "f25739dc9eb50f8177e1e93e87eaf32ea9c4a3d6",
+   "size": 2526
+  },
+  {
+   "path": "cursor-team-kit/agents",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "d352515042dda9e64384b08d9bfaef8475dcfcf4"
+  },
+  {
+   "path": "cursor-team-kit/agents/ci-watcher.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "8246bf1a5b7c0ed195e5867ffb98aa79c08e5ece",
+   "size": 984
+  },
+  {
+   "path": "cursor-team-kit/agents/thermo-nuclear-code-quality-review.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "dc83d959306c41bb9a4b504608d9607be34e4297",
+   "size": 1874
+  },
+  {
+   "path": "cursor-team-kit/assets",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "c53dcd7a133c20fd42115c3e42ca1205d4f1884b"
+  },
+  {
+   "path": "cursor-team-kit/assets/avatar.png",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "38e870c0fb4b4589280d31f5fb6144e09098f1ee",
+   "size": 59641
+  },
+  {
+   "path": "cursor-team-kit/rules",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "a2bf408fb697592ba5e52343169425aed114031a"
+  },
+  {
+   "path": "cursor-team-kit/rules/no-inline-imports.mdc",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ddcaf5701b4d4be7295aded799c360cad0a1cbe2",
+   "size": 314
+  },
+  {
+   "path": "cursor-team-kit/rules/typescript-exhaustive-switch.mdc",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "4011384a3fba02a16a758efbf79e531b3569666a",
+   "size": 297
+  },
+  {
+   "path": "cursor-team-kit/skills",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "f9b154131e86c710c110ad15955f22d287fc8556"
+  },
+  {
+   "path": "cursor-team-kit/skills/check-compiler-errors",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "4d2f1458358fd0f69a830d0de7bf2111d45879df"
+  },
+  {
+   "path": "cursor-team-kit/skills/check-compiler-errors/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "585f4bb67ce55ee04a9a8f8e1b1e86d51b6fdb4b",
+   "size": 535
+  },
+  {
+   "path": "cursor-team-kit/skills/control-cli",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "21f3eee2663ae7c78464bfc2a69f6a8cc6c4f7ed"
+  },
+  {
+   "path": "cursor-team-kit/skills/control-cli/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "69289ac517e8a28380c8eca5c6692e8a601fa62c",
+   "size": 4333
+  },
+  {
+   "path": "cursor-team-kit/skills/control-ui",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "797e6d20a029b2ae757a97951278d308f3b53026"
+  },
+  {
+   "path": "cursor-team-kit/skills/control-ui/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "68484fd5418cc893a6bf40e0db45b3001dcf5947",
+   "size": 4802
+  },
+  {
+   "path": "cursor-team-kit/skills/deslop",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "ac9ba043f9dd3b3a8850de6624ec5bc12e375599"
+  },
+  {
+   "path": "cursor-team-kit/skills/deslop/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "1b3827c7f991182149a7abda696af43ff8f17a12",
+   "size": 719
+  },
+  {
+   "path": "cursor-team-kit/skills/fix-ci",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "22d79ed45a382df99b95e1135f13ad0170500511"
+  },
+  {
+   "path": "cursor-team-kit/skills/fix-ci/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "60adbdde5b63ee95cea8180df8080498680e338d",
+   "size": 901
+  },
+  {
+   "path": "cursor-team-kit/skills/fix-merge-conflicts",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "9a539a5c5359e25c9a57df5a741e42524f2fe3c8"
+  },
+  {
+   "path": "cursor-team-kit/skills/fix-merge-conflicts/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "2940fe4c7f2ada9c119b5726bf276b834e6754b6",
+   "size": 988
+  },
+  {
+   "path": "cursor-team-kit/skills/get-pr-comments",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "5664b99671eeabafef1159cdb663cb162ace770d"
+  },
+  {
+   "path": "cursor-team-kit/skills/get-pr-comments/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "396aad5ff7cbe981124e9540ae786a120af77149",
+   "size": 529
+  },
+  {
+   "path": "cursor-team-kit/skills/loop-on-ci",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "2fc5e4bdb8c0924137377af7cf9d6b7585e092ec"
+  },
+  {
+   "path": "cursor-team-kit/skills/loop-on-ci/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "23a3860ad9873408960b285739c2927e70ad49c4",
+   "size": 1611
+  },
+  {
+   "path": "cursor-team-kit/skills/make-pr-easy-to-review",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "30493c1d9b061827149f0caafca027a9016f67c6"
+  },
+  {
+   "path": "cursor-team-kit/skills/make-pr-easy-to-review/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "f5343c095b6a2196b1474aa5013d82b8ceaa2120",
+   "size": 2275
+  },
+  {
+   "path": "cursor-team-kit/skills/new-branch-and-pr",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "509e25255c334b539c466d1fc7d8fd99e15745bf"
+  },
+  {
+   "path": "cursor-team-kit/skills/new-branch-and-pr/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "860682f0154756f2225daccc6b84fb4360830fd9",
+   "size": 665
+  },
+  {
+   "path": "cursor-team-kit/skills/pr-review-canvas",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "44daadad1fe53ccd3a2773e87879965c1640ab71"
+  },
+  {
+   "path": "cursor-team-kit/skills/pr-review-canvas/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "d88de04910e71537455eea8dd252631eea408475",
+   "size": 9088
+  },
+  {
+   "path": "cursor-team-kit/skills/pr-review-canvas/renderer.js",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "8bdf1b71070267d2173af211367328bc57f0a800",
+   "size": 6762
+  },
+  {
+   "path": "cursor-team-kit/skills/pr-review-canvas/styles.css",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e616d7666a0ac0678f4bb6660b0258834c5d47ad",
+   "size": 5788
+  },
+  {
+   "path": "cursor-team-kit/skills/pr-review-canvas/template.html",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ab58d2977992e3a5d4115aa67382dc1fadbe1b94",
+   "size": 513
+  },
+  {
+   "path": "cursor-team-kit/skills/review-and-ship",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "4c59edfc89811ff444ded5e4a3a07932852769a1"
+  },
+  {
+   "path": "cursor-team-kit/skills/review-and-ship/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "000e7537949adcbd60c49e1723e55cc700a5a62f",
+   "size": 1398
+  },
+  {
+   "path": "cursor-team-kit/skills/run-smoke-tests",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "b02dfd55bc710b80585e1cc0dea76e94923e5dab"
+  },
+  {
+   "path": "cursor-team-kit/skills/run-smoke-tests/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "fb0337f699926eb5835a82cf9de2b8c9078bd9f4",
+   "size": 967
+  },
+  {
+   "path": "cursor-team-kit/skills/thermo-nuclear-code-quality-review",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "d9c8935dd560b3b6f5941247d04a1843f8c7cc35"
+  },
+  {
+   "path": "cursor-team-kit/skills/thermo-nuclear-code-quality-review/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ac76a2bc88bb2d895e83ab1788aa584a82346cfc",
+   "size": 12437
+  },
+  {
+   "path": "cursor-team-kit/skills/verify-this",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "11c9aa1407bc647693437c510bcf5a508244c738"
+  },
+  {
+   "path": "cursor-team-kit/skills/verify-this/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "54bcf49ad0cc6256a90750fdbec7e27f79eb3d39",
+   "size": 2805
+  },
+  {
+   "path": "cursor-team-kit/skills/weekly-review",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "41c12c115b622e2a70d726f176766192ccb2d912"
+  },
+  {
+   "path": "cursor-team-kit/skills/weekly-review/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "216e855f7831afacac92c46345fee2ea4ba14629",
+   "size": 902
+  },
+  {
+   "path": "cursor-team-kit/skills/what-did-i-get-done",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "953a0fb2b6d763e4149da38a543778aed3091368"
+  },
+  {
+   "path": "cursor-team-kit/skills/what-did-i-get-done/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e6772b22b74998fc25cd8663981b6ac30cd91613",
+   "size": 1012
+  },
+  {
+   "path": "cursor-team-kit/skills/workflow-from-chats",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "c32988e8a39033397465591a2b5f7a58ea6ea337"
+  },
+  {
+   "path": "cursor-team-kit/skills/workflow-from-chats/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "a5170df9d84a937c210eb7739bff00451f9aa8cb",
+   "size": 2685
+  },
+  {
+   "path": "third_party/finance",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "05e278b4b7b9202ab3d64a24d4821e826943a709"
+  },
+  {
+   "path": "third_party/finance/.cursor-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "a7d8bdcc0873cd27ff2a0e15ed87d9f9fa256af0"
+  },
+  {
+   "path": "third_party/finance/.cursor-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "df98077430c145b45530cb2e84a2ec243426272d",
+   "size": 1236
+  },
+  {
+   "path": "third_party/finance/CHANGELOG.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "fb11063d86cdd9ed7c4494893dc0362a5c6c3139",
+   "size": 1474
+  },
+  {
+   "path": "third_party/finance/LICENSE",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ca2bba771cd39dbef6acf96b52481133983451f3",
+   "size": 1063
+  },
+  {
+   "path": "third_party/finance/README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "9f31d907388c73c8582f1139198436ab4a542ad8",
+   "size": 2595
+  },
+  {
+   "path": "third_party/finance/assets",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "d7a6e1ac12fd999373e96360d95ec8d4b7b75190"
+  },
+  {
+   "path": "third_party/finance/assets/logo.svg",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "13cbeda58006828e7161fb6cb11d377fe5bc833d",
+   "size": 959
+  },
+  {
+   "path": "third_party/finance/mcp.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "1b8a8c12e1a49c18f1651fe641aa6ddfe2459284",
+   "size": 145
+  },
+  {
+   "path": "third_party/github",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "1e5b3583cc0ac69c6f64ce6cb0fc97535d0251d9"
+  },
+  {
+   "path": "third_party/github/.cursor-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "e0dc71cf835ac8d2a771136709968faf11ddd66e"
+  },
+  {
+   "path": "third_party/github/.cursor-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "caa4158ce3f8cdb321313c9f7e75cd539bcc5a40",
+   "size": 1116
+  },
+  {
+   "path": "third_party/github/CHANGELOG.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "2d8967b5e72af0065f66b0cca52bfc574f89858d",
+   "size": 359
+  },
+  {
+   "path": "third_party/github/LICENSE",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ca2bba771cd39dbef6acf96b52481133983451f3",
+   "size": 1063
+  },
+  {
+   "path": "third_party/github/README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "38628e92f9946db20c150f5d21b57f3513224082",
+   "size": 2291
+  },
+  {
+   "path": "third_party/github/assets",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "a032c7aca03aa21d9528f88f4bf8a97a1d209d9d"
+  },
+  {
+   "path": "third_party/github/assets/logo.svg",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "7efe1a65134acf1a3268a89b32f18920758920dc",
+   "size": 934
+  },
+  {
+   "path": "third_party/github/mcp.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e2dafb8451e7b347b080d7485af1e5685f71d571",
+   "size": 214
+  }
+ ],
+ "truncated": false
+}

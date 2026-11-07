@@ -1,0 +1,389 @@
+{
+ "sha": "4bde3168b43c0655c4d00ea2726e631719908a6d",
+ "url": "https://api.github.com/repos/wshobson/agents/git/trees/4bde3168b43c0655c4d00ea2726e631719908a6d",
+ "tree": [
+  {
+   "path": ".claude-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "ba222bcb76bd1a05d9196a4a665808a5386410d2"
+  },
+  {
+   "path": ".claude-plugin/marketplace.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "5b001fa387132efbfb8bf8cf9d6a4c358265ff36",
+   "size": 46765
+  },
+  {
+   "path": "plugins/code-documentation",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "88929228b5061919228c49ea2d1a0c94f78dc755"
+  },
+  {
+   "path": "plugins/code-documentation/.claude-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "a97adef2a0e07e2d000c0d4472502ef3990cf948"
+  },
+  {
+   "path": "plugins/code-documentation/.claude-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "d1e44c5620c60e538710b0fc7a6a25288e1e1fd9",
+   "size": 296
+  },
+  {
+   "path": "plugins/code-documentation/agents",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "30cd35845b89deb1cde1e14cab83951d6a99f7c1"
+  },
+  {
+   "path": "plugins/code-documentation/agents/code-reviewer.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "7972beb0d273d258c463ab30a78601701f76fb5a",
+   "size": 8434
+  },
+  {
+   "path": "plugins/code-documentation/agents/docs-architect.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "f00cb829cdc3f3121adc28f10622ade6ff4c3cf1",
+   "size": 3687
+  },
+  {
+   "path": "plugins/code-documentation/agents/tutorial-engineer.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "a7d47c7724fa2730cb51ad353506297f8622c6f0",
+   "size": 4380
+  },
+  {
+   "path": "plugins/code-documentation/commands",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "054022a68c2c8ba494aa841e0656b985a9a68adc"
+  },
+  {
+   "path": "plugins/code-documentation/commands/code-explain.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "44749267b56a0f7fbe44c9fd276873ccacd3839f",
+   "size": 22433
+  },
+  {
+   "path": "plugins/code-documentation/commands/doc-generate.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "a454ae046b2b9b85816615456b5fd9268d920300",
+   "size": 17553
+  },
+  {
+   "path": "plugins/documentation-standards",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "a87c972e57cb6c2c8bb5ed7e0bee0f8acb08833f"
+  },
+  {
+   "path": "plugins/documentation-standards/.claude-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "9320e2d0c6a7f3b831f0d96e39dacd57021a01d1"
+  },
+  {
+   "path": "plugins/documentation-standards/.claude-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "23db7a9352b6a038a47799af196b87917635a357",
+   "size": 492
+  },
+  {
+   "path": "plugins/documentation-standards/.codex-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "2e287a58b4a4afd5f08ded0b68a233b61414aa31"
+  },
+  {
+   "path": "plugins/documentation-standards/.codex-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "1ebf7faacef3a8d65c57bf7089e184dc4355f685",
+   "size": 973
+  },
+  {
+   "path": "plugins/documentation-standards/skills",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "27c963c9284d048d86dc285f4a0e65601361de6d"
+  },
+  {
+   "path": "plugins/documentation-standards/skills/grounded-vault",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "da5d61a5c09321640c50c3be4bc031a847f39cc7"
+  },
+  {
+   "path": "plugins/documentation-standards/skills/grounded-vault/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e446fe7b367ce15774d8563466ef17d9617cf817",
+   "size": 5445
+  },
+  {
+   "path": "plugins/documentation-standards/skills/grounded-vault/references",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "09216f27d8221d87310d5e23d8e7b2659f254c76"
+  },
+  {
+   "path": "plugins/documentation-standards/skills/grounded-vault/references/details.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "049e72c0b41123fbf9db15b1fb98b570539fe7af",
+   "size": 8431
+  },
+  {
+   "path": "plugins/documentation-standards/skills/hads",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "1b81b1fbf0e1ba9a37e29188fecb0594cede6c34"
+  },
+  {
+   "path": "plugins/documentation-standards/skills/hads/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "c2019180f74f6cd7fde61e4ef2a4466cb2203c5c",
+   "size": 6104
+  },
+  {
+   "path": "plugins/protect-mcp",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "550fdf334bbc9ddb5c147a87623a9f16f34b408a"
+  },
+  {
+   "path": "plugins/protect-mcp/.claude-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "adedc4b12fe92797b4473f796b73772569a27af3"
+  },
+  {
+   "path": "plugins/protect-mcp/.claude-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "d8cb51ef6f500e48c9aa796d680bf34ebefb0617",
+   "size": 343
+  },
+  {
+   "path": "plugins/protect-mcp/.codex-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "e1340ee8e36db6cb9048e46faa8f0770e6382df7"
+  },
+  {
+   "path": "plugins/protect-mcp/.codex-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "2ea41c1fbce1b16c21dcffbbc2eefcdfc9f19ddb",
+   "size": 778
+  },
+  {
+   "path": "plugins/protect-mcp/README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "2ed7ab18ab23f11b0a69d01505af9d813fa5f132",
+   "size": 9530
+  },
+  {
+   "path": "plugins/protect-mcp/agents",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "7560275d6fdc5ce7a572c94ec0ef5f56fcec75e3"
+  },
+  {
+   "path": "plugins/protect-mcp/agents/policy-enforcer.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "530341c4fd1a225e497f8782cc8abccb19d1f05d",
+   "size": 10881
+  },
+  {
+   "path": "plugins/protect-mcp/agents/receipt-verifier.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "998ad30d6e93055ecc962be4c2d7580f1507d45a",
+   "size": 5473
+  },
+  {
+   "path": "plugins/protect-mcp/commands",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "0aa8b36c8258da580964017b7f16af3966ec656f"
+  },
+  {
+   "path": "plugins/protect-mcp/commands/audit-chain.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e0b9596baeb9c08f5b3f5774cd3c309a33d5a4f0",
+   "size": 4480
+  },
+  {
+   "path": "plugins/protect-mcp/commands/verify-receipt.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "00cd6df42c691ee68fa572c87ba7199821bad580",
+   "size": 3256
+  },
+  {
+   "path": "plugins/protect-mcp/hooks",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "238835951825b14e83d0f789a05244310d176f9e"
+  },
+  {
+   "path": "plugins/protect-mcp/hooks/evaluate.sh",
+   "mode": "100755",
+   "type": "blob",
+   "sha": "d0b32f55ff4ac6c29167a18472040548fb22b05c",
+   "size": 1558
+  },
+  {
+   "path": "plugins/protect-mcp/hooks/hooks.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "9af6423af6210d094202d293f7cba4c80bf1684e",
+   "size": 459
+  },
+  {
+   "path": "plugins/protect-mcp/hooks/sign.sh",
+   "mode": "100755",
+   "type": "blob",
+   "sha": "2fa27f04eac81573bda4766d53c0486a50481978",
+   "size": 656
+  },
+  {
+   "path": "plugins/protect-mcp/skills",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "4547d68df8d7ce126b905c26e2c66b557abbc939"
+  },
+  {
+   "path": "plugins/protect-mcp/skills/protect-mcp-setup",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "657caf53f954ece45ef2ed96780b088bf7de6f6a"
+  },
+  {
+   "path": "plugins/protect-mcp/skills/protect-mcp-setup/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ba138e7691a47ea0bdf12ba91ebf8ad04f54e163",
+   "size": 8475
+  },
+  {
+   "path": "plugins/protect-mcp/skills/protect-mcp-setup/references",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "1c51f2d513cdf8c449e84f616f8530113fe3ddba"
+  },
+  {
+   "path": "plugins/protect-mcp/skills/protect-mcp-setup/references/receipt-format.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "0cb6568e0dbef3660d7cf46d2f1c8776f3efb0a9",
+   "size": 1660
+  },
+  {
+   "path": "plugins/protect-mcp/test",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "901b5ca6acd2468720b283bd9b2e62c7d8b5bead"
+  },
+  {
+   "path": "plugins/protect-mcp/test/README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "08d3ced66b812331b4f114b3370c294c41f85b1b",
+   "size": 4115
+  },
+  {
+   "path": "plugins/protect-mcp/test/expected",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "da8f6d943b0fd6cf747135fdf5b344d650b85ea6"
+  },
+  {
+   "path": "plugins/protect-mcp/test/expected/receipt-schema.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "6e5c3c99a54fddc53d2cc22f858a279400c9f102",
+   "size": 1657
+  },
+  {
+   "path": "plugins/protect-mcp/test/fixtures",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "f73a80438a8796a49e3921820f101fb7ac0db756"
+  },
+  {
+   "path": "plugins/protect-mcp/test/fixtures/posttool-signing-input.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "88507fd5314305064eb58c20a37cf293744447f6",
+   "size": 265
+  },
+  {
+   "path": "plugins/protect-mcp/test/fixtures/pretool-allow-bash-safe.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "1bace0f540510eb062cf18018df3fec6bb681ab3",
+   "size": 169
+  },
+  {
+   "path": "plugins/protect-mcp/test/fixtures/pretool-allow-read.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "6f0bf0b84990cc0990b3380b282f34ce669a51d5",
+   "size": 172
+  },
+  {
+   "path": "plugins/protect-mcp/test/fixtures/pretool-deny-bash-destructive.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e418efb9adc6cba497f3cfef0ccb2c80b96e5d59",
+   "size": 176
+  },
+  {
+   "path": "plugins/protect-mcp/test/fixtures/pretool-deny-write.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "2f49d6dd4dca5bb6d088f7e8a485c108290ff697",
+   "size": 199
+  },
+  {
+   "path": "plugins/protect-mcp/test/fixtures/test-policy.cedar",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "9a79ce0ba0f2b8aef0b4b5ac285d0c8d3929c156",
+   "size": 1995
+  },
+  {
+   "path": "plugins/protect-mcp/test/run-tests.sh",
+   "mode": "100755",
+   "type": "blob",
+   "sha": "772f65df14575bb1b5ba47cc59ffb9b04b4a609f",
+   "size": 9966
+  },
+  {
+   "path": "plugins/protect-mcp/test/verify-fixtures.sh",
+   "mode": "100755",
+   "type": "blob",
+   "sha": "c63a81380e1209b1adf51df5e89b2e75d5e3e354",
+   "size": 1842
+  }
+ ],
+ "truncated": false
+}

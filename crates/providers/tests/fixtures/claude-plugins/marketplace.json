@@ -1,0 +1,156 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-plugins-official",
+  "description": "Directory of popular Claude Code extensions including development tools, productivity plugins, and MCP integrations",
+  "owner": {
+    "name": "Anthropic",
+    "email": "support@anthropic.com"
+  },
+  "renames": {
+    "adlc": "agentforce-adlc",
+    "airwallex": "airwallex-agentos",
+    "convex-backend": "convex",
+    "vals": "valtown",
+    "wordpress.com": "build-with-wordpress",
+    "qodo-skills": "qodo",
+    "atlassian-forge-skills": "forge-skills",
+    "azure-skills": "azure",
+    "sonarqube-agent-plugins": "sonarqube",
+    "data-agent-kit-starter-pack": "data-agent-kit"
+  },
+  "plugins": [
+    {
+      "name": "42crunch-api-security-testing",
+      "description": "Automate API security directly in Claude Code with 42Crunch - automatically audit OpenAPI specs, detect vulnerabilities aligned with OWASP API Security risks (including BOLA/BFLA), and apply AI-powered fixes. Designed for AI-assisted development workflows, it provides continuous guardrails through an audit->scan->remediate->validate loop, ensuring APIs meet enterprise security standards before deployment.",
+      "author": {
+        "name": "42Crunch"
+      },
+      "category": "security",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/42Crunch-AI/claude-plugins.git",
+        "path": "plugins/api-security-testing",
+        "ref": "v1.5.5",
+        "sha": "faf5305385de8afed9468904e8639be737aff39e"
+      },
+      "homepage": "https://42crunch.com"
+    },
+    {
+      "name": "agent-sdk-dev",
+      "description": "Development kit for working with the Claude Agent SDK",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "source": "./plugins/agent-sdk-dev",
+      "category": "development",
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/agent-sdk-dev"
+    },
+    {
+      "name": "amd-skills",
+      "description": "AMD's verified Agent Skills in one plugin: route image/audio through local AI on Ryzen AI, serve LLMs on AMD Instinct GPUs with vLLM, optimize inference throughput with Hyperloom, and analyze GPU kernel and PyTorch trace performance.",
+      "author": {
+        "name": "AMD"
+      },
+      "category": "development",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/amd/skills.git",
+        "path": "skills",
+        "ref": "main",
+        "sha": "6916fb371d1cba40757b223cf16b4cd4912b202f"
+      },
+      "strict": false,
+      "skills": [
+        "./local-ai-use",
+        "./local-ai-app-integration",
+        "./serving-llms-on-instinct",
+        "./tracelens-analysis-orchestrator",
+        "./hyperloom-workload-optimizer"
+      ],
+      "homepage": "https://developer.amd.com/"
+    },
+    {
+      "name": "box",
+      "description": "Work with your Box content directly from Claude Code — search files, organize folders, collaborate with your team, and use Box AI to answer questions, summarize documents, and extract data without leaving your workflow.",
+      "category": "productivity",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/box/skills.git",
+        "sha": "84320fd8984b95cab430335cd341d8314c14bbcb"
+      },
+      "skills": [
+        "./skills/box",
+        "./skills/box-legal-workflows",
+        "./skills/box-legal-workflows-contract",
+        "./skills/box-legal-workflows-intake",
+        "./skills/box-legal-workflows-ma"
+      ],
+      "homepage": "https://github.com/box/skills"
+    },
+    {
+      "name": "feature-dev",
+      "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "source": "./plugins/feature-dev",
+      "category": "development",
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/feature-dev"
+    },
+    {
+      "name": "github",
+      "description": "Official GitHub MCP server for repository management. Create issues, manage pull requests, review code, search repositories, and interact with GitHub's full API directly from Claude Code.",
+      "category": "productivity",
+      "source": "./external_plugins/github",
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/external_plugins/github"
+    },
+    {
+      "name": "hookify",
+      "description": "Easily create custom hooks to prevent unwanted behaviors by analyzing conversation patterns or from explicit instructions. Define rules via simple markdown files.",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "source": "./plugins/hookify",
+      "category": "productivity",
+      "homepage": "https://github.com/anthropics/claude-plugins-public/tree/main/plugins/hookify"
+    },
+    {
+      "name": "rust-analyzer-lsp",
+      "description": "Rust language server for code intelligence and analysis",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "source": "./plugins/rust-analyzer-lsp",
+      "category": "development",
+      "strict": false,
+      "lspServers": {
+        "rust-analyzer": {
+          "command": "rust-analyzer",
+          "extensionToLanguage": {
+            ".rs": "rust"
+          }
+        }
+      }
+    },
+    {
+      "name": "xcode",
+      "displayName": "Xcode",
+      "description": "Work with Xcode projects from Claude Code: build, run, and test schemes, render SwiftUI previews, drive simulators and devices, read build logs and diagnostics, and search Apple developer documentation.",
+      "author": {
+        "name": "Apple Inc."
+      },
+      "category": "development",
+      "source": {
+        "source": "command",
+        "command": "xcrun agent plugin path --plugin-format claude",
+        "mode": "link"
+      },
+      "homepage": "https://developer.apple.com/xcode/"
+    }
+  ]
+}

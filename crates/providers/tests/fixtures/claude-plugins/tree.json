@@ -1,0 +1,459 @@
+{
+ "sha": "0412be76f50ab4f4f8abff3753efa9269fbbca5b",
+ "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/0412be76f50ab4f4f8abff3753efa9269fbbca5b",
+ "tree": [
+  {
+   "path": ".claude-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "18234c7b431900be628781d4b4a14324a42970e9"
+  },
+  {
+   "path": ".claude-plugin/marketplace.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "4178a5b6b2e99fdec0c42a98d45171ffaa1e679a",
+   "size": 191974
+  },
+  {
+   "path": "external_plugins/github",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "ac3614de7ae410792daaafe026b4af7869f02ba4"
+  },
+  {
+   "path": "external_plugins/github/.claude-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "df0d5683d993c28b4a231039826db5459e2704e3"
+  },
+  {
+   "path": "external_plugins/github/.claude-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "4024e231e9b261c31137ff02ee436b4d543dddd9",
+   "size": 271
+  },
+  {
+   "path": "external_plugins/github/.mcp.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "46d47325a43efdb472b79ba48ad536499d81db63",
+   "size": 178
+  },
+  {
+   "path": "plugins/agent-sdk-dev",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "6a361dc21e40a9bb4d4d247d0b9054b38f619d8c"
+  },
+  {
+   "path": "plugins/agent-sdk-dev/.claude-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "0638a847a030f2a0e1a0afbaa691e9ef12f2a21b"
+  },
+  {
+   "path": "plugins/agent-sdk-dev/.claude-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "6b58a5f2348ab0f3dc5f7422fc17506035487530",
+   "size": 189
+  },
+  {
+   "path": "plugins/agent-sdk-dev/LICENSE",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+   "size": 11358
+  },
+  {
+   "path": "plugins/agent-sdk-dev/README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "12447a54c9e163f155cf27d2a627a6bc13f13ffa",
+   "size": 6397
+  },
+  {
+   "path": "plugins/agent-sdk-dev/agents",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "ebf99246502cb162acd60f2219dc9d9dead2b66e"
+  },
+  {
+   "path": "plugins/agent-sdk-dev/agents/agent-sdk-verifier-py.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "d4b70eadc30b84d4b0009091a68d02b343d7badb",
+   "size": 5206
+  },
+  {
+   "path": "plugins/agent-sdk-dev/agents/agent-sdk-verifier-ts.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "194b512ad67b76c9a58b80cf3f28acdfa6fb880f",
+   "size": 5419
+  },
+  {
+   "path": "plugins/agent-sdk-dev/commands",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "eea8a267d556774b749cdc75176ebe81a108680f"
+  },
+  {
+   "path": "plugins/agent-sdk-dev/commands/new-sdk-app.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ca63dc29eef850b19f10dd6eec8347f52dcf33ba",
+   "size": 7846
+  },
+  {
+   "path": "plugins/feature-dev",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "d45488761fd5bc6333c2f2d0bad863fbe120f925"
+  },
+  {
+   "path": "plugins/feature-dev/.claude-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "6d3365c172b4e83caa6a99485c03e51f8ee6da5b"
+  },
+  {
+   "path": "plugins/feature-dev/.claude-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "a1c85bf53db952b8423bcf2508724ab32d43ebbc",
+   "size": 284
+  },
+  {
+   "path": "plugins/feature-dev/LICENSE",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+   "size": 11358
+  },
+  {
+   "path": "plugins/feature-dev/README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "276c64effe7569225cfe3cef52d91cbe3b0143b7",
+   "size": 11697
+  },
+  {
+   "path": "plugins/feature-dev/agents",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "91333aea4fcf89ce30065feaf9849173eca8314b"
+  },
+  {
+   "path": "plugins/feature-dev/agents/code-architect.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "fcb78bfd11004048fa287ac52c55eb5c17855549",
+   "size": 2259
+  },
+  {
+   "path": "plugins/feature-dev/agents/code-explorer.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e0f667ef65f7204399110214defd46ce062a1a51",
+   "size": 2115
+  },
+  {
+   "path": "plugins/feature-dev/agents/code-reviewer.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "7fb589cbd7140152fae41720e391290ba202e57e",
+   "size": 2994
+  },
+  {
+   "path": "plugins/feature-dev/commands",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "c15193baa18fd0e1671286eb2e07151ca8d00e60"
+  },
+  {
+   "path": "plugins/feature-dev/commands/feature-dev.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "8bdeda3430e43afddbee79830db0f6ea9dfbf36a",
+   "size": 5097
+  },
+  {
+   "path": "plugins/hookify",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "5b84a6abba8224d160b61559f53d43513c10c85d"
+  },
+  {
+   "path": "plugins/hookify/.claude-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "d1331905cde0df663f12855ee85b5330873d219d"
+  },
+  {
+   "path": "plugins/hookify/.claude-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "b92c749e112917cb15b09b968692dff30769d7f9",
+   "size": 232
+  },
+  {
+   "path": "plugins/hookify/.gitignore",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "6d5f8af5db0888ee53137f37be6f170298daf497",
+   "size": 291
+  },
+  {
+   "path": "plugins/hookify/LICENSE",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+   "size": 11358
+  },
+  {
+   "path": "plugins/hookify/README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "1aca6cdfb71bbf67da11074f22b53c00d2ef4452",
+   "size": 7710
+  },
+  {
+   "path": "plugins/hookify/agents",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "3963cc812e425f92f9bdce3a7dd9895b38c3944b"
+  },
+  {
+   "path": "plugins/hookify/agents/conversation-analyzer.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "83aa9d062d8aff1b818682ec7ca6f5b8e4d80e77",
+   "size": 5625
+  },
+  {
+   "path": "plugins/hookify/commands",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "029770f5e260f6d1ead825055b28e1bb23477045"
+  },
+  {
+   "path": "plugins/hookify/commands/configure.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ccc7e472b39b4a84c06d86735bf86dec4f5aa340",
+   "size": 2863
+  },
+  {
+   "path": "plugins/hookify/commands/help.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ae6e94b1d714b05d728405fb5e496dd57f8bd6ba",
+   "size": 4624
+  },
+  {
+   "path": "plugins/hookify/commands/hookify.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e5fc645a80f97014645fd91c04772af21a238c58",
+   "size": 7667
+  },
+  {
+   "path": "plugins/hookify/commands/list.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "d6f810fb5368ee6623afd427314e13db50bb7841",
+   "size": 2020
+  },
+  {
+   "path": "plugins/hookify/core",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "dc1dd7e8b03b10caa86d299f5a67b0cafd8b5ed6"
+  },
+  {
+   "path": "plugins/hookify/core/__init__.py",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "size": 0
+  },
+  {
+   "path": "plugins/hookify/core/config_loader.py",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "fa2fc3e36fee0d886902d118a55ab12b08a0a876",
+   "size": 9690
+  },
+  {
+   "path": "plugins/hookify/core/rule_engine.py",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "51561c39e927ef53cabe56a2fa55054165e90d19",
+   "size": 10711
+  },
+  {
+   "path": "plugins/hookify/examples",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "621aa0862cd53611837ab7763cea01f02a741584"
+  },
+  {
+   "path": "plugins/hookify/examples/console-log-warning.local.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "c9352e7530c11635a990df827185e07fac681b57",
+   "size": 315
+  },
+  {
+   "path": "plugins/hookify/examples/dangerous-rm.local.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "8226eb197a7b498aeb1ef113ef38a155e683363a",
+   "size": 278
+  },
+  {
+   "path": "plugins/hookify/examples/require-tests-stop.local.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "87039186caa4a0ebf27ddddc83881b5355001f50",
+   "size": 500
+  },
+  {
+   "path": "plugins/hookify/examples/sensitive-files-warning.local.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "ae92971d8edd561096814b7f98ef181b8169a997",
+   "size": 421
+  },
+  {
+   "path": "plugins/hookify/hooks",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "691cc2a085a2b35bb92dc5980ea13c5262a4493b"
+  },
+  {
+   "path": "plugins/hookify/hooks/__init__.py",
+   "mode": "100755",
+   "type": "blob",
+   "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "size": 0
+  },
+  {
+   "path": "plugins/hookify/hooks/hooks.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "4aa457a28f4ee8db29aa4dfce4cd7b6b32098ab5",
+   "size": 1036
+  },
+  {
+   "path": "plugins/hookify/hooks/posttooluse.py",
+   "mode": "100755",
+   "type": "blob",
+   "sha": "9c6ccd92f7ce9eaee64aad64f89e4cc96a4a501c",
+   "size": 1622
+  },
+  {
+   "path": "plugins/hookify/hooks/pretooluse.py",
+   "mode": "100755",
+   "type": "blob",
+   "sha": "9aff51975f4eb014b91aa20f2ff6a07f21513304",
+   "size": 1852
+  },
+  {
+   "path": "plugins/hookify/hooks/stop.py",
+   "mode": "100755",
+   "type": "blob",
+   "sha": "b922a883d21bcbc825c4ddc17019f2545ed54d3f",
+   "size": 1403
+  },
+  {
+   "path": "plugins/hookify/hooks/userpromptsubmit.py",
+   "mode": "100755",
+   "type": "blob",
+   "sha": "6f54585b8f04489abb759e5e82f056a1b46998eb",
+   "size": 1389
+  },
+  {
+   "path": "plugins/hookify/matchers",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "9d1dcfdaf1a6857c5f83dc27019c7600e1ffaff8"
+  },
+  {
+   "path": "plugins/hookify/matchers/__init__.py",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "size": 0
+  },
+  {
+   "path": "plugins/hookify/skills",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "2b219d5a6e78ea4846d7bab9e064ce97d0f67df6"
+  },
+  {
+   "path": "plugins/hookify/skills/writing-rules",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "419cd37ff832b1ba46b956b173d1278315b9619f"
+  },
+  {
+   "path": "plugins/hookify/skills/writing-rules/SKILL.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "58f9e6d1b4f37f52f936372ba0c65ab627fcf4e0",
+   "size": 8423
+  },
+  {
+   "path": "plugins/hookify/utils",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "9d1dcfdaf1a6857c5f83dc27019c7600e1ffaff8"
+  },
+  {
+   "path": "plugins/hookify/utils/__init__.py",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+   "size": 0
+  },
+  {
+   "path": "plugins/rust-analyzer-lsp",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "9e3c7db0356ca98fbaa3848af77b89786a155919"
+  },
+  {
+   "path": "plugins/rust-analyzer-lsp/.claude-plugin",
+   "mode": "040000",
+   "type": "tree",
+   "sha": "1fb9fb54d8f27c1003dcc37b7aa41f046dd7b78c"
+  },
+  {
+   "path": "plugins/rust-analyzer-lsp/.claude-plugin/plugin.json",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "10b085dd3922d12c56c0ca00b98ac3aaafd879b4",
+   "size": 360
+  },
+  {
+   "path": "plugins/rust-analyzer-lsp/LICENSE",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+   "size": 11358
+  },
+  {
+   "path": "plugins/rust-analyzer-lsp/README.md",
+   "mode": "100644",
+   "type": "blob",
+   "sha": "7af3b186074744f2e1eb5790507ee0df274ea624",
+   "size": 701
+  }
+ ],
+ "truncated": false
+}
